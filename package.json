@@ -1,0 +1,19 @@
+{
+  "name": "sacrament-program-api",
+  "version": "1.0.0",
+  "description": "Sacrament Meeting Program API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carolmadella/sacrament-program-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carolmadella/sacrament-program-api/issues"
+  },
+  "homepage": "https://github.com/carolmadella/sacrament-program-api#readme"
+}
