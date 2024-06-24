@@ -1,0 +1,67 @@
+<div>
+    <h1><%= title %> Form </h1>
+</div>
+
+    <div class="container">
+        <form action="/post" method="post">
+            <label for="regd_no">Date: </label>
+            <input type="text" id="regd_no" name="regd_no">
+            <label for="name">Ward Name: </label>
+            <input type="text" id="name" name="name">
+            <label for="email">City: </label>
+            <input type="email" name="email">
+            <label for="email">Image: </label>
+            <input type="email" name="email">
+            <label for="email">Quote: </label>
+            <input type="email" name="email">
+            <label for="email">Date: </label>
+            <input type="email" name="email">
+
+            <label for="branch">Meeting Type: </label>
+            <select name="branch" id="branch">
+                <option value="Sacrament">Sacrament Meeting</option>
+                <option value="FastTestimony">Fast & Testimony Meeting</option>
+                <option value="WardConfrence">Ward Confrence</option>
+                <option value="StakeConfrence">Stake Confrence</option>
+                <option value="Baptism">Baptism Meeting</option>
+            </select>
+            
+            <label for="email">Presiding: </label>
+            <select name="branch" id="branch">
+                <select name="branch" id="branch">
+                    <option value="Sacrament">Bishop</option>
+                    <option value="1stCouncilorBishopric">1st Councilor (Bishopric)</option>
+                    <option value="2ndCouncilorBishopric">2nd Councilor (Bishopric)</option>
+                    <option value="StakePresident">Executive Secretary</option>
+                    <option value="1stCouncilorstake">Ward Clerk</option>
+                    <option value="2ndCouncilorstake">Financial Clerk</option>
+                    <option value="Elders Quorum President">Elders Quorum President</option>
+                    <option value="ReliefSocietyPresident">Relief Society President</option>                
+                <option value="YoungWomanPresident">Young Woman President</option>
+                <option value="PrimaryPresident">Primary President</option>
+                <option value="TempleFamilyHistory">Temple & Family History</option>
+                <option value="WardBuildingRep">Ward Building Rep</option>
+                <option value="MusicChairPerson">Music Chair Person</option>
+                <option value="WardMissionLeader">Ward Mission Leader</option>
+                <option value="FullTimeMissionaries">Full-Time Missionaries</option>
+            </select>
+
+            <label for="name">Name: </label>
+            <input type="text" name="name">
+            
+            <label for="phone">Phone: </label>
+            <input type="tel" name="phone">
+            <label for="email">Email: </label>
+            <input type="email" name="email">
+            <label for="start_date">Start Date: </label>
+            <input type="date" name="start_date">
+            <label for="end_date">End Date: </label>
+            <input type="date" name="end_date">
+            <label for="image">Image: </label>
+            <input type="file" name="image">
+            <label for="other_info">Other info: </label>
+            <textarea name="other_info"></textarea>
+
+            <button type="submit">Send form</button>
+        </form>
+    </div>

@@ -1,0 +1,25 @@
+<div>
+    <h1><%= title %> Form </h1>
+</div>
+
+<div class="container">
+    <form action="/post" method="post">
+        <label for="regd_no">Date: </label>
+        <input type="date" id="regd_no" name="regd_no">
+        <label for="name">Time: </label>
+        <input type="time" id="name" name="name">
+        <label for="contact_person">Contact Person: </label>
+        <input type="text" id="contact_person" name="contact_person">
+        <label for="phone">Phone: </label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email">
+        <label for="tagline">TagLine: </label>
+        <input type="text" id="tagline" name="tagline">
+        <label for="information">Information: </label>
+        <textarea id="information" name="information"></textarea>
+
+        <button type="submit">Send form</button>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<div>
+    <h1>Additional Information Form <%= title %></h1>
+</div>
+
+<div class="container">
+    <form action="/post" method="post">
+        <label for="date">Date: </label>
+        <input type="text" id="date" name="date">
+        <label for="time">Time: </label>
+        <input type="text" id="time" name="time">
+        <label for="contact_person">Contact Person: </label>
+        <input type="email" name="contact_person">
+        <label for="phone">Phone: </label>
+        <input type="text" name="phone">
+
+        <label for="email">Email: </label>
+        <input type="email" name="email">
+        <label for="tagline">TagLine: </label>
+        <input type="text" name="tagline">
+        <label for="information">Information: </label>
+        <input type="text" name="information">
+
+        <button type="submit">Send form</button>
+    </form>
+</div>
