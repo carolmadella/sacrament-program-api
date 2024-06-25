@@ -3,7 +3,7 @@ const express = require("express");
 const http = require('http');
 const logger = require('morgan');
 const path = require('path');
-const router = require('./routes/index');
+// const router = require('./routes/index');
 const { auth, requiresAuth }  = require('express-openid-connect');
 // const express = require("express");
 const cors = require("cors");
@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', router);
+// app.use('/', router);
 
 
 

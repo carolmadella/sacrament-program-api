@@ -58,14 +58,16 @@ router.get('/sacrament', requiresAuth(), function (req, res, next) {
     });
   });
   
-
-  router.get('/ComeFollowMe', requiresAuth(), function (req, res, next) {
-    res.render('ComeFollowMe', {
-      userProfile: JSON.stringify(req.oidc.user, null, 2),
-      title: 'ComeFollowMe',
-      isAuthenticated: req.oidc.isAuthenticated()
-    });
+  app.get('/ComeFollowMe', (req, res) => {
+    res.render('ComeFollowMe', { title: 'Come Follow Me' });
   });
+//   router.get('/ComeFollowMe', requiresAuth(), function (req, res, next) {
+//     res.render('ComeFollowMe', {
+//       userProfile: JSON.stringify(req.oidc.user, null, 2),
+//       title: 'ComeFollowMe',
+//       isAuthenticated: req.oidc.isAuthenticated()
+//     });
+//   });
 
   router.get('/addpicure', requiresAuth(), function (req, res, next) {
     res.render('addpicure', {
