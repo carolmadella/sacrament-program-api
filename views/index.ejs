@@ -1,7 +1,11 @@
-<!-- views/index.ejs -->
-<!-- < %- include('partials/header') %> -->
+<%- include('partials/head') -%>
+<%- include('partials/nav') -%>
+<h1 class="text-4xl">Hello World</h1>
 
-<%- include('partials/navigation') %>
-<h2>Welcome to the Sacrament Program</h2>
-<p>This is to be able to create and share the Sacrament meeting programs with updated information.</p>
-<%- include('partials/footer') %>
+<% if (locals.isAuthenticated) { %>
+    <p>You are logged in. <a href="/profile" class="underline">View your profile</a>.</p>
+<% } else { %>
+    <p>You are not logged in. <a href="/login" class="underline">Login</a>.</p>
+<% } %>
+
+<%- include('partials/footer') -%>

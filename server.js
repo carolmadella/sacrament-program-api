@@ -1,12 +1,50 @@
-var express = require("express");
-const cors = require("cors");
-var bodyParser = require("body-parser");
-var app = express();
-
+const dotenv = require('dotenv');
+const express = require("express");
+const http = require('http');
+const logger = require('morgan');
 const path = require('path');
+const router = require('./routes/index');
+const { auth, requiresAuth }  = require('express-openid-connect');
+// const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const app = express();
+
+
+
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'a long, randomly-generated string stored in env',
+  baseURL: 'http://localhost:3410',
+  clientID: 'A07aavT8jjCMjsFZCr6mq4Ob8AWYnn2w',
+  issuerBaseURL: 'https://dev-2m0hivzhngw2t7lk.us.auth0.com'
+};
+
+
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+
+app.use(function (req, res, next) {
+  res.locals.user = req.oidc.user;
+  next();
+});
+
+app.use('/', router);
+
+
+
+
+// req.isAuthenticated is provided from the auth router
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
 
 // app.set('views', path.join(__dirname, 'views'));
 // const swaggerJsdoc = require("swagger-jsdoc");
@@ -26,8 +64,14 @@ app.set('view engine', 'ejs');
 //   swaggerDefinition: swaggerDoc,
 //   apis: ["./routes/*.js"], // Use a global pattern to include all route files
 // };
-
+app.use(auth(config));
 // const swaggerSpecs = swaggerJsdoc(options);
+// const PORT = process.env.PORT || 3410;
+// if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {
+//   config.baseURL = `http://localhost:${PORT}`;
+// }
+
+
 
 
 // Use CORS middleware
@@ -81,8 +125,17 @@ app.get('/sacrament', (req, res) => {
   res.render('sacrament', { title: 'Sacrament' });
 });
 
+app.get('/login', (req, res) => {
+  res.render('login', { title: 'login' });
+});
 
 
+app.get('/profile', requiresAuth(), function (req, res, next) {
+  res.render('profile', {
+    userProfile: JSON.stringify(req.oidc.user, null, 2),
+    title: 'Profile page'
+  });
+});
 // app.listen(3200, () => {
 //   console.log("Server is running on Port 3200");
 // });
