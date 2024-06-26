@@ -1,0 +1,80 @@
+<div>
+    <h1><%= title %> Form </h1>
+</div>
+
+
+<div class="container">
+    <form action="/post" method="post">
+        <label for="regd_no">Date: </label>
+        <input type="date" id="regd_no" name="regd_no">
+        <label for="WardName">Ward Name: </label>
+        <input type="text" id="name" name="WardName">
+        <label for="city">City: </label>
+        <input type="text" name="city">
+        <label for="Image">Image: </label>
+        <input type="email" name="Image">
+        <label for="Quote">Quote: </label>
+        <input type="text" name="Quote">
+
+        <label for="branch">Meeting Type: </label>
+        <select name="branch" id="branch">
+            <option value="Sacrament">Sacrament Meeting</option>
+            <option value="FastTestimony">Fast & Testimony Meeting</option>
+            <option value="WardConfrence">Ward Confrence</option>
+            <option value="StakeConfrence">Stake Confrence</option>
+            <option value="Baptism">Baptism Meeting</option>
+        </select>
+        
+        <label for="Presiding">Presiding: </label>
+        <select name="Presiding" id="Presiding">
+            <option value="Bishop">Bishop</option>
+            <option value="1stCouncilorBishopric">1st Councilor (Bishopric)</option>
+            <option value="2ndCouncilorBishopric">2nd Councilor (Bishopric)</option>
+            <option value="StakePresident">Stake President</option>
+            <option value="1stCouncilorstake">1st Councilor (stake)</option>
+            <option value="2ndCouncilorstake">2nd Councilor (stake)</option>
+            <option value="General Authority">General Authority</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="Organist">Organist: </label>
+        <select name="Organist" id="Organist">
+            <option value="OrganPerson1">Person1</option>
+            <option value="OrganPerson2">Person2</option>
+            <option value="OrganPerson3">Person3</option>
+            <option value="OrganPerson4">Person4</option>
+        </select>
+        <label for="Chorister">Chorister: </label>
+        <select name="Chorister" id="Chorister">
+            <option value="ChoristerPerson1">Person1</option>
+            <option value="ChoristerPerson2">Person2</option>
+            <option value="ChoristerPerson3">Person3</option>
+            <option value="ChoristerPerson4">Person4</option>
+        </select>
+
+        
+        <label for="OpeningHymn">Opening Hymn: </label>
+        <input type="text" id="OpeningHymn" name="OpeningHymn">
+        <label for="Invocation">Invocation: </label>
+        <input type="text" id="Invocation" name="Invocation">
+        <label for="SacramentHymn">Sacrament Hymn: </label>
+        <input type="text" id="SacramentHymn" name="SacramentHymn">
+        <label for="Speaker1">1st Speaker: </label>
+        <input type="text" id="Speaker1" name="Speaker1">
+        <label for="Speaker2">2nd Speaker: </label>
+        <input type="text" id="Speaker2" name="Speaker2">
+        <label for="Speaker3">3rd Speaker: </label>
+        <input type="text" id="Speaker3" name="Speaker3">
+        <label for="MusicalNumber1">Musical Number1: </label>
+        <input type="text" id="MusicalNumber1" name="MusicalNumber1">
+        <label for="MusicalNumber2">Musical Number2: </label>
+        <input type="text" id="MusicalNumber2" name="MusicalNumber2">
+        
+        <label for="ClosingHymn">Closing Hymn: </label>
+        <input type="text" id="ClosingHymn" name="ClosingHymn">
+        <label for="Benediction">Benediction: </label>
+        <input type="text" id="Benediction" name="Benediction">
+
+        <button type="submit">Send form</button>
+    </form>
+</div>
