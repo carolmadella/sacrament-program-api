@@ -1,6 +1,8 @@
 var express = require("express");
 const cors = require("cors");
 var bodyParser = require("body-parser");
+
+const { swaggerUi, swaggerSpec } = require('./swagger');
 var app = express();
 
 const path = require('path');
@@ -81,6 +83,25 @@ app.get('/sacrament', (req, res) => {
   res.render('sacrament', { title: 'Sacrament' });
 });
 
+// app.post('/post', async (req, res,next) => {
+//   const { date, scriptures, lesson, link } = req.body
+//   const user = new Users({
+//       date,
+//       scriptures,
+//       lesson,
+//       link
+//   })
+//   await user.save()
+//   console.log(user)
+//   // res.render('form.html', { message: "Form submission Succesful" })
+//   res.redirect('/')
+//   next()  
+
+//   // res.send("Form submission Succesful")
+// })
+
+// Swagger setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 // app.listen(3200, () => {
