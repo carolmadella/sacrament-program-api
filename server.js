@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-
+const { swaggerSpecs } = require('./swagger');
 const path = require('path');
 
 // Set the view engine to EJS
@@ -14,20 +14,20 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDoc = require("./swagger.json");
 
 // Added the code below to implement swagger docs with help of ChatGPT
-// const options = {
-//   definition: {
-//     openapi: "3.0.0",
-//     info: {
-//       title: "CSE341 Sacrament Meeting Program API",
-//       version: "1.0.0",
-//     },
-//     servers: [{ url: process.env.URL }],
-//   },
-//   swaggerDefinition: swaggerDoc,
-//   apis: ["./routes/*.js"], // Use a global pattern to include all route files
-// };
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "CSE341 Sacrament Meeting Program API",
+      version: "1.0.0",
+    },
+    servers: [{ url: process.env.URL }],
+  },
+  swaggerDefinition: swaggerDoc,
+  apis: ["./routes/*.js"], // Use a global pattern to include all route files
+};
 
-// const swaggerSpecs = swaggerJsdoc(options);
+const swaggerSpecs = swaggerJsdoc(options);
 
 
 // Use CORS middleware
@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 // Serve Swagger documentation
-// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 app.use(express.static(path.join(__dirname, 'public')));
 // IMPORT ALL ROUTES HERE
@@ -80,7 +80,6 @@ app.get('/addpicure', (req, res) => {
 app.get('/sacrament', (req, res) => {
   res.render('sacrament', { title: 'Sacrament' });
 });
-
 
 
 // app.listen(3200, () => {
