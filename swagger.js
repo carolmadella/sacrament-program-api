@@ -1,32 +1,32 @@
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+// const swaggerJsdoc = require('swagger-jsdoc');
+// const swaggerUi = require('swagger-ui-express');
 
-// Swagger definition
-const swaggerDefinition = {
-  openapi: '3.0.0',
-  info: {
-    title: 'Sacrament API',
-    version: '1.0.0',
-    description: 'API documentation for the Sacrament webpage',
-  },
-  servers: [
-    {
-      url: 'https://sacrament-program-api.onrender.com/', // Change this to your actual server URL
-    },
-  ],
-};
+// // Swagger definition
+// const swaggerDefinition = {
+//   openapi: '3.0.0',
+//   info: {
+//     title: 'Sacrament API',
+//     version: '1.0.0',
+//     description: 'API documentation for the Sacrament webpage',
+//   },
+//   servers: [
+//     {
+//       url: 'https://sacrament-program-api.onrender.com/', // Change this to your actual server URL
+//     },
+//   ],
+// };
 
-// Options for the swagger docs
-const options = {
-  swaggerDefinition,
-  // Paths to files containing OpenAPI definitions
-  apis: ['./routes/*.js'], // Adjust the path as needed
-};
+// // Options for the swagger docs
+// const options = {
+//   swaggerDefinition,
+//   // Paths to files containing OpenAPI definitions
+//   apis: ['./routes/*.js'], // Adjust the path as needed
+// };
 
-// Initialize swagger-jsdoc
-const swaggerSpec = swaggerJsdoc(options);
+// // Initialize swagger-jsdoc
+// const swaggerSpec = swaggerJsdoc(options);
 
-module.exports = {
-  swaggerUi,
-  swaggerSpec,
-};
+// module.exports = {
+//   swaggerUi,
+//   swaggerSpec,
+// };
