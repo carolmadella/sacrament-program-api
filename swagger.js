@@ -11,7 +11,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:5001', // Change this to your actual server URL
+      url: 'https://sacrament-program-api.onrender.com/', // Change this to your actual server URL
     },
   ],
 };
