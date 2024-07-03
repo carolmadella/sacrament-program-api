@@ -63,3 +63,66 @@ exports.createHymn = async (req, res) => {
 
 };
 
+// PUT Request
+expdelete = async (req, res) => {
+    const hymnsId = req.params.id;
+    const updatedHymn = req.body;
+  
+    //data validation
+    if (hymnsId == null || updatedHymn == null) {
+      return res.status(404).json({ error: "invalid input provided" });
+    }
+  
+    try {
+      const db = await mongodb.connectDB();
+      const collection = db.collection("hymns");
+  
+      // Update the hymn by ID
+      const result = await collection.findOneAndUpdate(
+        { _id: new mongodb.ObjectId (hymnsId) },
+        { $set: updatedHymn },
+        { returnNewDocument: true }
+      );
+  
+      // Check if the hymn was found and updated
+      if (!result) {
+        return res.status(404).json({ error: "Hymn not found" });
+      }
+  
+      res.status(204).json({
+        message: "Hymn updated successfully",
+      });
+    } catch (error) {
+      console.error("Error updating hymn:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  };
+// DELETE route to delete a resource
+exports.deleteHymn = async (req, res) => {
+  const hymnId = req.params.id;
+
+  //data validation
+  if (hymnId == null) {
+    return res.status(404).json({ error: "invalid input provided" });
+  }
+  // copied from ChatGPT some of the code below
+  try {
+    const db = await mongodb.connectDB();
+    const collection = db.collection("hymns");
+
+    // Delete the hymn by ID
+    const result = await collection.findOneAndDelete({
+      _id: new mongodb.ObjectId(hymnId),
+    });
+
+    // Check if the hymn was found and deleted
+    if (!result) {
+      return res.status(404).json({ error: "Hymn not found" });
+    }
+
+    res.status(200).json({ message: "Hymn deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting Hymn:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
