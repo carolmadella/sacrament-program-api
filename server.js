@@ -1,9 +1,10 @@
-var express = require("express");
+const express = require("express");
 const cors = require("cors");
-var bodyParser = require("body-parser");
-var app = express();
+const bodyParser = require("body-parser");
+const app = express();
 
 const path = require('path');
+
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');

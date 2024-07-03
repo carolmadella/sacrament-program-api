@@ -23,10 +23,15 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "express-validator": "^7.1.0",
     "mongodb": "^6.7.0",
-    "nodemon": "^3.1.4",
     "path": "^0.12.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "swagger-autogen": "^2.23.7"
   }
 }
