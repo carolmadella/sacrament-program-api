@@ -2,7 +2,7 @@ var express = require("express");
 const cors = require("cors");
 var bodyParser = require("body-parser");
 
-const {  swaggerSpec } = require('./swagger');
+const { swaggerUi , swaggerSpec } = require('./swagger');
 var app = express();
 
 const path = require('path');
@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 
 app.set('views', path.join(__dirname, 'views'));
 const swaggerJsdoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
+// const swaggerUi = require("swagger-ui-express");
 const swaggerDoc = require("./swagger.json");
 
 // Added the code below to implement swagger docs with help of ChatGPT
@@ -26,7 +26,7 @@ const options = {
     servers: [{ url: `${process.env.URL}:${process.env.PORT}` }],
   },
   swaggerDefinition: swaggerDoc,
-  apis: ["./routes/*.js"], // Use a global pattern to include all route files
+  apis: ["./api-docs/*.js"], // Use a global pattern to include all route files
 };
 
 const swaggerSpecs = swaggerJsdoc(options);
@@ -102,7 +102,7 @@ app.get('/sacrament', (req, res) => {
 // })
 
 // Swagger setup
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 // app.listen(3410, () => {
