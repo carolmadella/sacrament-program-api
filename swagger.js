@@ -9,11 +9,11 @@ const swaggerDefinition = {
     version: '1.0.0',
     description: 'API documentation for the Sacrament webpage',
   },
-//   servers: [
-//     {
-//       url: 'https://sacrament-program-api.onrender.com/', // Change this to your actual server URL
-//     },
-//   ],
+  servers: [
+    {
+      url: 'https://sacrament-program-api.onrender.com/', // Change this to your actual server URL
+    },
+  ],
 };
 
 // Options for the swagger docs
