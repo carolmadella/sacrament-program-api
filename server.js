@@ -2,7 +2,7 @@ var express = require("express");
 const cors = require("cors");
 var bodyParser = require("body-parser");
 
-const { swaggerUi, swaggerSpec } = require('./swagger');
+const {  swaggerSpec } = require('./swagger');
 var app = express();
 
 const path = require('path');
