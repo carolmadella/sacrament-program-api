@@ -64,7 +64,7 @@ exports.createHymn = async (req, res) => {
 };
 
 // PUT Request
-expdelete = async (req, res) => {
+exports.updateHymn = async (req, res) => {
     const hymnsId = req.params.id;
     const updatedHymn = req.body;
   
