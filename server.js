@@ -5,14 +5,13 @@ const app = express();
 
 const path = require('path');
 
-
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
 
-// app.set('views', path.join(__dirname, 'views'));
-// const swaggerJsdoc = require("swagger-jsdoc");
-// const swaggerUi = require("swagger-ui-express");
-// const swaggerDoc = require("./swagger.json");
+app.set('views', path.join(__dirname, 'views'));
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDoc = require("./swagger.json");
 
 // Added the code below to implement swagger docs with help of ChatGPT
 // const options = {
