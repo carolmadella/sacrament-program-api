@@ -217,6 +217,29 @@
         }
       },
       "/general-announcements": {
+        "get": {
+          "summary": "Get all general announcements",
+          "description": "Retrieve a list of all general announcements.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "List of general announcements",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/GeneralAnnouncement"
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
         "post": {
           "summary": "Create a general announcement",
           "description": "Add a new general announcement to a meeting.",
@@ -246,7 +269,131 @@
           }
         }
       },
+      "/general-announcements/{id}": {
+        "get": {
+          "summary": "Get a general announcement by ID",
+          "description": "Retrieve a general announcement by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the general announcement to retrieve",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "General announcement retrieved successfully",
+              "schema": {
+                "$ref": "#/definitions/GeneralAnnouncement"
+              }
+            },
+            "404": {
+              "description": "General announcement not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a general announcement by ID",
+          "description": "Update an existing general announcement by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the general announcement to update",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "General announcement object with updated data",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/GeneralAnnouncement"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "General announcement updated successfully"
+            },
+            "404": {
+              "description": "General announcement not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a general announcement by ID",
+          "description": "Delete an existing general announcement by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the general announcement to delete",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "General announcement deleted successfully"
+            },
+            "404": {
+              "description": "General announcement not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
       "/stake-announcements": {
+        "get": {
+          "summary": "Get all stake announcements",
+          "description": "Retrieve a list of all stake announcements.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "List of stake announcements",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/StakeAnnouncement"
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
         "post": {
           "summary": "Create a stake announcement",
           "description": "Add a new stake announcement to a meeting.",
@@ -276,7 +423,131 @@
           }
         }
       },
-      "/callings-announcements": {
+      "/stake-announcements/{id}": {
+        "get": {
+          "summary": "Get a stake announcement by ID",
+          "description": "Retrieve a stake announcement by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the stake announcement to retrieve",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Stake announcement retrieved successfully",
+              "schema": {
+                "$ref": "#/definitions/StakeAnnouncement"
+              }
+            },
+            "404": {
+              "description": "Stake announcement not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a stake announcement by ID",
+          "description": "Update an existing stake announcement by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the stake announcement to update",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Stake announcement object with updated data",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/StakeAnnouncement"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Stake announcement updated successfully"
+            },
+            "404": {
+              "description": "Stake announcement not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a stake announcement by ID",
+          "description": "Delete an existing stake announcement by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the stake announcement to delete",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Stake announcement deleted successfully"
+            },
+            "404": {
+              "description": "Stake announcement not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/calling-announcements": {
+        "get": {
+          "summary": "Get all calling announcements",
+          "description": "Retrieve a list of all calling announcements.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "List of calling announcements",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/CallingAnnouncement"
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
         "post": {
           "summary": "Create a calling announcement",
           "description": "Add a new calling announcement to a meeting.",
@@ -306,7 +577,131 @@
           }
         }
       },
+      "/calling-announcements/{id}": {
+        "get": {
+          "summary": "Get a calling announcement by ID",
+          "description": "Retrieve a calling announcement by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the calling announcement to retrieve",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Calling announcement retrieved successfully",
+              "schema": {
+                "$ref": "#/definitions/CallingAnnouncement"
+              }
+            },
+            "404": {
+              "description": "Calling announcement not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a calling announcement by ID",
+          "description": "Update an existing calling announcement by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the calling announcement to update",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Calling announcement object with updated data",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/CallingAnnouncement"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Calling announcement updated successfully"
+            },
+            "404": {
+              "description": "Calling announcement not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a calling announcement by ID",
+          "description": "Delete an existing calling announcement by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the calling announcement to delete",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Calling announcement deleted successfully"
+            },
+            "404": {
+              "description": "Calling announcement not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
       "/speakers": {
+        "get": {
+          "summary": "Get all speakers",
+          "description": "Retrieve a list of all speakers.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "List of speakers",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Speaker"
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
         "post": {
           "summary": "Create a speaker",
           "description": "Add a new speaker to a meeting.",
@@ -336,10 +731,10 @@
           }
         }
       },
-      "/prayers": {
-        "post": {
-          "summary": "Create a prayer",
-          "description": "Add a new prayer to a meeting.",
+      "/speakers/{id}": {
+        "get": {
+          "summary": "Get a speaker by ID",
+          "description": "Retrieve a speaker by its ID.",
           "security": [
             {
               "Bearer": []
@@ -347,29 +742,31 @@
           ],
           "parameters": [
             {
-              "name": "body",
-              "in": "body",
-              "description": "Prayer object to be created",
+              "name": "id",
+              "in": "path",
+              "description": "ID of the speaker to retrieve",
               "required": true,
-              "schema": {
-                "$ref": "#/definitions/Prayer"
-              }
+              "type": "string"
             }
           ],
           "responses": {
-            "201": {
-              "description": "Prayer created successfully"
+            "200": {
+              "description": "Speaker retrieved successfully",
+              "schema": {
+                "$ref": "#/definitions/Speaker"
+              }
+            },
+            "404": {
+              "description": "Speaker not found"
             },
             "500": {
               "description": "Internal Server Error"
             }
           }
-        }
-      },
-      "/priesthood-ordinations": {
-        "post": {
-          "summary": "Create a priesthood ordination",
-          "description": "Add a new priesthood ordination to a meeting.",
+        },
+        "put": {
+          "summary": "Update a speaker by ID",
+          "description": "Update an existing speaker by its ID.",
           "security": [
             {
               "Bearer": []
@@ -377,18 +774,57 @@
           ],
           "parameters": [
             {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the speaker to update",
+              "required": true,
+              "type": "string"
+            },
+            {
               "name": "body",
               "in": "body",
-              "description": "Priesthood ordination object to be created",
+              "description": "Speaker object with updated data",
               "required": true,
               "schema": {
-                "$ref": "#/definitions/PriesthoodOrdination"
+                "$ref": "#/definitions/Speaker"
               }
             }
           ],
           "responses": {
-            "201": {
-              "description": "Priesthood ordination created successfully"
+            "200": {
+              "description": "Speaker updated successfully"
+            },
+            "404": {
+              "description": "Speaker not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a speaker by ID",
+          "description": "Delete an existing speaker by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the speaker to delete",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Speaker deleted successfully"
+            },
+            "404": {
+              "description": "Speaker not found"
             },
             "500": {
               "description": "Internal Server Error"
@@ -397,6 +833,29 @@
         }
       },
       "/hymns": {
+        "get": {
+          "summary": "Get all hymns",
+          "description": "Retrieve a list of all hymns.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "List of hymns",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Hymn"
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
         "post": {
           "summary": "Create a hymn",
           "description": "Add a new hymn to a meeting.",
@@ -425,19 +884,114 @@
             }
           }
         }
+      },
+      "/hymns/{id}": {
+        "get": {
+          "summary": "Get a hymn by ID",
+          "description": "Retrieve a hymn by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the hymn to retrieve",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Hymn retrieved successfully",
+              "schema": {
+                "$ref": "#/definitions/Hymn"
+              }
+            },
+            "404": {
+              "description": "Hymn not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a hymn by ID",
+          "description": "Update an existing hymn by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the hymn to update",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Hymn object with updated data",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Hymn"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Hymn updated successfully"
+            },
+            "404": {
+              "description": "Hymn not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a hymn by ID",
+          "description": "Delete an existing hymn by its ID.",
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the hymn to delete",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Hymn deleted successfully"
+            },
+            "404": {
+              "description": "Hymn not found"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
       }
     },
     "definitions": {
       "Meeting": {
         "type": "object",
-        "required": [
-          "date",
-          "location"
-        ],
+        "required": ["date", "location"],
         "properties": {
-          "id": {
-            "type": "string"
-          },
           "date": {
             "type": "string",
             "format": "date"
@@ -469,18 +1023,6 @@
               "$ref": "#/definitions/Speaker"
             }
           },
-          "prayers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/Prayer"
-            }
-          },
-          "priesthoodOrdinations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/PriesthoodOrdination"
-            }
-          },
           "hymns": {
             "type": "array",
             "items": {
@@ -491,68 +1033,35 @@
       },
       "GeneralAnnouncement": {
         "type": "object",
-        "required": [
-          "title",
-          "description"
-        ],
+        "required": ["message"],
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
+          "message": {
             "type": "string"
           }
         }
       },
       "StakeAnnouncement": {
         "type": "object",
-        "required": [
-          "title",
-          "description"
-        ],
+        "required": ["message"],
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
+          "message": {
             "type": "string"
           }
         }
       },
       "CallingAnnouncement": {
         "type": "object",
-        "required": [
-          "name",
-          "calling"
-        ],
+        "required": ["message"],
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "calling": {
+          "message": {
             "type": "string"
           }
         }
       },
       "Speaker": {
         "type": "object",
-        "required": [
-          "name",
-          "topic"
-        ],
+        "required": ["name", "topic"],
         "properties": {
-          "id": {
-            "type": "string"
-          },
           "name": {
             "type": "string"
           },
@@ -561,63 +1070,15 @@
           }
         }
       },
-      "Prayer": {
-        "type": "object",
-        "required": [
-          "type",
-          "name"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string",
-            "enum": ["Opening", "Closing"]
-          },
-          "name": {
-            "type": "string"
-          }
-        }
-      },
-      "PriesthoodOrdination": {
-        "type": "object",
-        "required": [
-          "name",
-          "ordinationType"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "ordinationType": {
-            "type": "string",
-            "enum": ["Deacon", "Teacher", "Priest", "Elder"]
-          }
-        }
-      },
       "Hymn": {
         "type": "object",
-        "required": [
-          "number",
-          "title"
-        ],
+        "required": ["number", "title"],
         "properties": {
-          "id": {
-            "type": "string"
-          },
           "number": {
             "type": "integer"
           },
           "title": {
             "type": "string"
-          },
-          "hymnType": {
-            "type": "string",
-            "enum": ["Opening", "Intermediate", "Special", "Closing"]
           }
         }
       }
