@@ -13,7 +13,6 @@ app.set('view engine', 'ejs');
 // const swaggerUi = require("swagger-ui-express");
 // const swaggerDoc = require("./swagger.json");
 
-// Added the code below to implement swagger docs with help of ChatGPT
 // const options = {
 //   definition: {
 //     openapi: "3.0.0",
@@ -80,8 +79,6 @@ app.get('/addpicure', (req, res) => {
 app.get('/sacrament', (req, res) => {
   res.render('sacrament', { title: 'Sacrament' });
 });
-
-
 
 // app.listen(3200, () => {
 //   console.log("Server is running on Port 3200");
