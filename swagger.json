@@ -216,10 +216,10 @@
           }
         }
       },
-      "/general-announcements": {
+      "/announcements": {
         "get": {
-          "summary": "Get all general announcements",
-          "description": "Retrieve a list of all general announcements.",
+          "summary": "Get all Announcements",
+          "description": "Retrieve a list of all Announcements.",
           "security": [
             {
               "Bearer": []
@@ -227,11 +227,11 @@
           ],
           "responses": {
             "200": {
-              "description": "List of general announcements",
+              "description": "List of Announcements",
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/GeneralAnnouncement"
+                  "$ref": "#/definitions/Announcement"
                 }
               }
             },
@@ -241,8 +241,8 @@
           }
         },
         "post": {
-          "summary": "Create a general announcement",
-          "description": "Add a new general announcement to a meeting.",
+          "summary": "Create an Announcement",
+          "description": "Add a New Announcement to a Meeting.",
           "security": [
             {
               "Bearer": []
@@ -252,16 +252,16 @@
             {
               "name": "body",
               "in": "body",
-              "description": "General announcement object to be created",
+              "description": "Announcement object to be Created",
               "required": true,
               "schema": {
-                "$ref": "#/definitions/GeneralAnnouncement"
+                "$ref": "#/definitions/Announcement"
               }
             }
           ],
           "responses": {
             "201": {
-              "description": "General announcement created successfully"
+              "description": "Announcement Created Successfully"
             },
             "500": {
               "description": "Internal Server Error"
@@ -269,10 +269,10 @@
           }
         }
       },
-      "/general-announcements/{id}": {
+      "/announcements/{id}": {
         "get": {
-          "summary": "Get a general announcement by ID",
-          "description": "Retrieve a general announcement by its ID.",
+          "summary": "Get an Announcement by ID",
+          "description": "Retrieve an Announcement by its ID.",
           "security": [
             {
               "Bearer": []
@@ -282,20 +282,20 @@
             {
               "name": "id",
               "in": "path",
-              "description": "ID of the general announcement to retrieve",
+              "description": "ID of the Announcement to Retrieve",
               "required": true,
               "type": "string"
             }
           ],
           "responses": {
             "200": {
-              "description": "General announcement retrieved successfully",
+              "description": "Announcement Retrieved Successfully",
               "schema": {
-                "$ref": "#/definitions/GeneralAnnouncement"
+                "$ref": "#/definitions/Announcement"
               }
             },
             "404": {
-              "description": "General announcement not found"
+              "description": "Announcement Not Found"
             },
             "500": {
               "description": "Internal Server Error"
@@ -303,8 +303,8 @@
           }
         },
         "put": {
-          "summary": "Update a general announcement by ID",
-          "description": "Update an existing general announcement by its ID.",
+          "summary": "Update an Announcement by ID",
+          "description": "Update an Existing Announcement by its ID.",
           "security": [
             {
               "Bearer": []
@@ -314,14 +314,14 @@
             {
               "name": "id",
               "in": "path",
-              "description": "ID of the general announcement to update",
+              "description": "ID of the Announcement to Update",
               "required": true,
               "type": "string"
             },
             {
               "name": "body",
               "in": "body",
-              "description": "General announcement object with updated data",
+              "description": "Announcement object with Updated Data",
               "required": true,
               "schema": {
                 "$ref": "#/definitions/GeneralAnnouncement"
@@ -330,10 +330,10 @@
           ],
           "responses": {
             "200": {
-              "description": "General announcement updated successfully"
+              "description": "Announcement Updated Successfully"
             },
             "404": {
-              "description": "General announcement not found"
+              "description": "Announcement Not Found"
             },
             "500": {
               "description": "Internal Server Error"
@@ -341,8 +341,8 @@
           }
         },
         "delete": {
-          "summary": "Delete a general announcement by ID",
-          "description": "Delete an existing general announcement by its ID.",
+          "summary": "Delete an Announcement by ID",
+          "description": "Delete an Existing Announcement by its ID.",
           "security": [
             {
               "Bearer": []
@@ -352,325 +352,17 @@
             {
               "name": "id",
               "in": "path",
-              "description": "ID of the general announcement to delete",
+              "description": "ID of the Announcement to delete",
               "required": true,
               "type": "string"
             }
           ],
           "responses": {
             "200": {
-              "description": "General announcement deleted successfully"
+              "description": "Announcement Deleted Successfully"
             },
             "404": {
-              "description": "General announcement not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/stake-announcements": {
-        "get": {
-          "summary": "Get all stake announcements",
-          "description": "Retrieve a list of all stake announcements.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "List of stake announcements",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/StakeAnnouncement"
-                }
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "post": {
-          "summary": "Create a stake announcement",
-          "description": "Add a new stake announcement to a meeting.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Stake announcement object to be created",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/StakeAnnouncement"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Stake announcement created successfully"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/stake-announcements/{id}": {
-        "get": {
-          "summary": "Get a stake announcement by ID",
-          "description": "Retrieve a stake announcement by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the stake announcement to retrieve",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Stake announcement retrieved successfully",
-              "schema": {
-                "$ref": "#/definitions/StakeAnnouncement"
-              }
-            },
-            "404": {
-              "description": "Stake announcement not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "put": {
-          "summary": "Update a stake announcement by ID",
-          "description": "Update an existing stake announcement by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the stake announcement to update",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Stake announcement object with updated data",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/StakeAnnouncement"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Stake announcement updated successfully"
-            },
-            "404": {
-              "description": "Stake announcement not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete a stake announcement by ID",
-          "description": "Delete an existing stake announcement by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the stake announcement to delete",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Stake announcement deleted successfully"
-            },
-            "404": {
-              "description": "Stake announcement not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/calling-announcements": {
-        "get": {
-          "summary": "Get all calling announcements",
-          "description": "Retrieve a list of all calling announcements.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "List of calling announcements",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/CallingAnnouncement"
-                }
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "post": {
-          "summary": "Create a calling announcement",
-          "description": "Add a new calling announcement to a meeting.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Calling announcement object to be created",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/CallingAnnouncement"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Calling announcement created successfully"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/calling-announcements/{id}": {
-        "get": {
-          "summary": "Get a calling announcement by ID",
-          "description": "Retrieve a calling announcement by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the calling announcement to retrieve",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Calling announcement retrieved successfully",
-              "schema": {
-                "$ref": "#/definitions/CallingAnnouncement"
-              }
-            },
-            "404": {
-              "description": "Calling announcement not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "put": {
-          "summary": "Update a calling announcement by ID",
-          "description": "Update an existing calling announcement by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the calling announcement to update",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Calling announcement object with updated data",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/CallingAnnouncement"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Calling announcement updated successfully"
-            },
-            "404": {
-              "description": "Calling announcement not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete a calling announcement by ID",
-          "description": "Delete an existing calling announcement by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the calling announcement to delete",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Calling announcement deleted successfully"
-            },
-            "404": {
-              "description": "Calling announcement not found"
+              "description": "Announcement Not Found"
             },
             "500": {
               "description": "Internal Server Error"

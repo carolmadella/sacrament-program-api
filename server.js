@@ -15,7 +15,6 @@ const swaggerJsdoc = require("swagger-jsdoc");
 // const swaggerUi = require("swagger-ui-express");
 const swaggerDoc = require("./swagger.json");
 
-// Added the code below to implement swagger docs with help of ChatGPT
 const options = {
   definition: {
     openapi: "3.0.0",
