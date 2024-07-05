@@ -6,7 +6,6 @@ const uri = process.env.CONNECTION_STRING
 // Database Name
 const dbName = process.env.DB_NAME;
 
-// copied from ChatGPT the code below
 // Create a MongoDB client instance
 const client = new MongoClient(uri);
 
