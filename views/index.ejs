@@ -5,4 +5,11 @@
 <%- include('./partials/navigation.ejs') %>
 <h2>Welcome to the Sacrament Program</h2>
 <p>This is to be able to create and share the Sacrament meeting programs with updated information.</p>
+
+<% if (locals.isAuthenticated) { %>
+    <p>You are logged in. <a href="/profile" class="underline">View your profile</a>.</p>
+<% } else { %>
+    <p>You are not logged in. <a href="/login" class="underline">Login</a>.</p>
+<% } %>
+
 <%- include('partials/footer') %>
