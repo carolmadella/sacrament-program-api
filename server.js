@@ -81,6 +81,12 @@ router.get('/about', (req, res, next) => {
     isAuthenticated: req.oidc.isAuthenticated() });
 });
 
+router.get('/myProfile', (req, res, next) => {
+  res.render('myProfile', { title: 'My Profile',
+    userProfile: JSON.stringify(req.oidc.user, null, 2),
+    isAuthenticated: req.oidc.isAuthenticated() });
+});
+
 router.get('/additionalinformation', (req, res) => {
   res.render('additionalinformation', { title: 'Additional Information' });
 });
