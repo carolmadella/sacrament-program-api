@@ -76,31 +76,44 @@ app.use('/hymns', hymnsRoutes);
 // app.get('/', (req, res) => {
 //   res.render('index', { title: 'Home' });
 // });
-app.get('/about', (req, res) => {
-  res.render('about', { title: 'about' });
+router.get('/about', (req, res, next) => {
+  res.render('about', { title: 'about',
+    isAuthenticated: req.oidc.isAuthenticated() });
 });
 
-app.get('/additionalinformation', (req, res) => {
+router.get('/additionalinformation', (req, res) => {
   res.render('additionalinformation', { title: 'Additional Information' });
 });
-app.get('/ComeFollowMe', (req, res) => {
-  res.render('ComeFollowMe', { title: 'Come Follow Me' });
+router.get('/ComeFollowMe', (req, res, next) => {
+  res.render('ComeFollowMe', { title: 'Come Follow Me',
+    isAuthenticated: req.oidc.isAuthenticated()
+   });
 });
 
-app.get('/leadership', (req, res) => {
+router.get('/leadership', (req, res) => {
   res.render('leadership', { title: 'Leadership' });
 });
 
-app.get('/announcement', (req, res) => {
+router.get('/announcement', (req, res) => {
   res.render('announcement', { title: 'Announcement' });
 });
 
-app.get('/addpicure', (req, res) => {
+router.get('/addpicure', (req, res) => {
   res.render('addpicure', { title: 'Add Picure' });
 });
-app.get('/sacrament', (req, res) => {
+router.get('/sacrament', (req, res) => {
   res.render('sacrament', { title: 'Sacrament' });
 });
+
+
+router.get('/profile',  (req, res) => {
+  res.render('profile', {title: 'Sacrament' 
+    // userProfile: JSON.stringify(req.oidc.user, null, 2),
+    // title: 'Profile page',
+    // isAuthenticated: req.oidc.isAuthenticated()
+  });
+});
+
 
 // app.post('/post', async (req, res,next) => {
 //   const { date, scriptures, lesson, link } = req.body

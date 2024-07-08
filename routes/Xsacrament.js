@@ -1,4 +1,8 @@
+
+const { requiresAuth } = require('express-openid-connect');
+
 /**
+ * 
  * @swagger
  * /sacrament:
  *   get:
@@ -22,7 +26,7 @@
  *                     description: The sacrament name
  *                     example: Baptism
  */
-app.get('/sacrament', (req, res) => {
+app.get('/sacrament', requiresAuth(), (req, res) => {
     // Your code to fetch and return sacraments
     res.status(200).json([
       { id: '1', name: 'Baptism' },
