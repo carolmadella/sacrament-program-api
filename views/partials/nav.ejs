@@ -1,11 +1,24 @@
 
 <div class="hamburger-menu">
     <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <label for="menu-toggle" class="menu-icon">&#9776;   Sacrament
+    <% if (locals.user) { %> <%= user.nickname %>  <a href="/logout">logout</a> 
+    <% } else { %>
+        <a href="/login">login</a>
+    <% } %></label>
+
+          <!-- < % if (locals.user) { %>
+            < %= user.nickname %>
+            <li><a href="/logout">logout</a></li>
+             < % } else { %>
+                 <li><a href="/login">login</a></li>
+             < % } %> -->
+      
     <ul class="menu">
         <li><a href="/">Home</a></li>
+        <li><a href="/myProfile">My Profile</a></li>  
         <li><a href="/about">About</a></li>  
-<li><a href="/profile">Profile</a></li>
+<!-- <li><a href="/profile">Profile</a></li> -->
      
         <li><a href="/sacrament">Sacraments Form</a></li>
         <li><a href="/ComeFollowMe">Come Follow Me Form</a></li>
@@ -20,6 +33,7 @@
         <li><a href="#">Create & Publish PDF Program</a></li>
         <li><a href="#">Previous Meeting Programs</a></li>
         <li><a href="#">Add to mailing list request for PDF Program</a></li>
+        <!-- <li><a href="/logout">logout</a></li> -->
         <% } else { %>
             <li><a href="/login">login</a></li>
         <% } %>
