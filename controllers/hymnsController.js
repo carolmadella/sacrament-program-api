@@ -15,7 +15,6 @@ exports.getHymnById = async (req, res) => {
     return res.status(404).json({ error: "invalid input provided" });
   }
 
-  // copied from ChatGPT the code below
   try {
     const db = await mongodb.connectDB();
 
@@ -64,7 +63,7 @@ exports.createHymn = async (req, res) => {
 };
 
 // PUT Request
-expdelete = async (req, res) => {
+exports.updateHymn = async (req, res) => {
     const hymnsId = req.params.id;
     const updatedHymn = req.body;
   
@@ -105,7 +104,6 @@ exports.deleteHymn = async (req, res) => {
   if (hymnId == null) {
     return res.status(404).json({ error: "invalid input provided" });
   }
-  // copied from ChatGPT some of the code below
   try {
     const db = await mongodb.connectDB();
     const collection = db.collection("hymns");

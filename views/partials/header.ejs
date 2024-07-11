@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <!-- <title>< %= title %></title> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
  </head>
@@ -20,6 +20,15 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
+            <% if (locals.user) { %>
+                <a  href="/profile" 
+                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">Profile</a>
+                <a  href="/logout" 
+                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">Logout</a>
+            <% } else { %>
+                <a  href="/login" 
+                    class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">Login</a>
+            <% } %>
         </nav>
     </header>
     <!-- <main> -->

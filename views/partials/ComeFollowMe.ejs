@@ -17,3 +17,19 @@
             <button type="submit">Send form</button>
         </form>
     </div>
+    <!-- app.post('/post', async (req, res,next) => {
+        const { date, scriptures, lesson, link } = req.body
+        const user = new Users({
+            date,
+            scriptures,
+            lesson,
+            link
+        })
+        await user.save()
+        console.log(user)
+        // res.render('form.html', { message: "Form submission Succesful" })
+        res.redirect('/')
+        next()  
+    
+        // res.send("Form submission Succesful")
+    }) -->
