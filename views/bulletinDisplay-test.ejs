@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulletin Display</title>
+  <style>
+    .bulletin-entry {
+      margin-bottom: 20px;
+    }
+    .date {
+      font-weight: bold;
+      display: inline-block;
+      width: 120px; /* Adjust width as needed */
+    }
+    .content {
+      display: inline-block;
+      margin-left: 20px;
+    }
+    .link {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bulletin Display</h1>
+  <h2>Current Week and Next Four Weeks</h2>
+   <%  
+   let daterange = '';
+  let newtitle = '';
+  let study_ref = '';
+
+  
+  data.forEach(item => {
+
+    
+    try {
+        
+      const titleParts = item.title.split(':');
+      if (titleParts.length >= 2) {
+        newtitle = titleParts[titleParts.length - 2].trim();
+        const studyRefParts = titleParts[titleParts.length - 1].trim().split('.');
+        if (studyRefParts.length >= 2) {
+          study_ref = studyRefParts[studyRefParts.length - 2].trim();
+          daterange = studyRefParts[studyRefParts.length - 1].trim();
+        } else {
+          study_ref = titleParts[titleParts.length - 1].trim();
+        }
+      } else {
+        newtitle = item.title.trim();
+      }
+    } catch (error) {
+      console.error('Error parsing title:', error);
+    }
+  
+    console.log(`Date Range: ${daterange}, Title: ${newtitle}, Study Reference: ${study_ref}`);
+  });
+    %>
+    <div class="bulletin-entry">
+      <div class="date"><%= daterange %></div>
+      <div class="content"><%= newtitle %> <%= study_ref %></div>
+      <div class="link">
+        (<%= study_ref %>) - <a href="< %= item.link %>">Link</a>
+      </div>
+    </div>
+  <% ; %>
+</body>
+</html>

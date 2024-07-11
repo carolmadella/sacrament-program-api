@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Come Follow Me Lessons</title>
+</head>
+<body>
+  <h1>Enter Week Number</h1>
+  <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+  <% } %>
+  <form action="/collect" method="POST">
+    <input type="number" name="weekNumber" value="<%= nextWeekNumber %>" required>
+    <button type="submit">Submit</button>
+  </form>
+  <h2>Collected Lessons</h2>
+  <ul>
+    <% lessons.forEach(lesson => { %>
+      <li>
+        <strong>Week Number:</strong> <%= lesson.weekNumber %> <br>
+        <strong>URL:</strong> <a href="<%= lesson.url %>"><%= lesson.url %></a> <br>
+        <strong>Title:</strong> <%= lesson.title %> <br>
+        <strong>Date Range:</strong> <%= lesson.dateRange %> <br>
+        <strong>Scripture:</strong> <%= lesson.scripture %> <br>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

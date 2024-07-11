@@ -6,6 +6,9 @@ const logger = require('morgan');
 const path = require('path');
 const router = require('./routes/index');
 
+const mongoose = require('mongoose');
+const dataRoutes = require('./routes/dataRoutes');
+
 
 const { swaggerUi , swaggerSpec } = require('./swagger');
 var app = express();
@@ -58,7 +61,9 @@ const hymnsRoutes = require('./routes/hymnsRoutes');
 
 const { requiresAuth } = require('express-openid-connect');
 
-router.get('/', function (req, res, next) {
+app.use('/', dataRoutes);
+
+router.get('/index', function (req, res, next) {
   res.render('index', {
     title: 'Auth0 Webapp sample Nodejs',
     isAuthenticated: req.oidc.isAuthenticated()
@@ -71,7 +76,8 @@ router.get('/', function (req, res, next) {
 app.use('/hymns', hymnsRoutes);
 
 app.use('/hymns', hymnsRoutes);
-
+// app.use('/cfm', dataRoutes);
+// app.use('/', dataRoutes);
 
 // app.get('/', (req, res) => {
 //   res.render('index', { title: 'Home' });
@@ -81,8 +87,8 @@ router.get('/about', (req, res, next) => {
     isAuthenticated: req.oidc.isAuthenticated() });
 });
 
-router.get('/myProfile', (req, res, next) => {
-  res.render('myProfile', { title: 'My Profile',
+router.get('/profile/myProfile', (req, res, next) => {
+  res.render('profile/Profile', { title: 'My Profile',
     userProfile: JSON.stringify(req.oidc.user, null, 2),
     isAuthenticated: req.oidc.isAuthenticated() });
 });
@@ -111,6 +117,13 @@ router.get('/sacrament', (req, res) => {
   res.render('sacrament', { title: 'Sacrament' });
 });
 
+router.get('/Myresults', (req, res, next) => {
+  res.render('Myresults', { title: 'My results' ,
+    userProfile: JSON.stringify(req.oidc.user, null, 2),
+    isAuthenticated: req.oidc.isAuthenticated() });
+});
+
+
 
 router.get('/profile',  (req, res) => {
   res.render('profile', {title: 'Sacrament' 
@@ -118,6 +131,35 @@ router.get('/profile',  (req, res) => {
     // title: 'Profile page',
     // isAuthenticated: req.oidc.isAuthenticated()
   });
+});
+// router.get('/indexCFM', async (req, res) => {
+//   try {
+//     const data = await Data.find({});
+//     const lastEntry = await Data.findOne({}).sort({ _id: -1 }).exec();
+//     const currentWeek = lastEntry ? parseInt(lastEntry.reference.split(' ')[3]) + 1 : 1;
+//     res.render('index', { data, currentWeek });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Error fetching data');
+//   }
+// });
+
+
+router.get('/bulletin-display', async (req, res) => {
+  try {
+    const today = new Date();
+    const currentWeek = Math.ceil((today - new Date(today.getFullYear(), 0, 1)) / (7 * 24 * 60 * 60 * 1000));
+    const data = await Data.find({});
+    const filteredData = data.filter(item => {
+      const itemWeek = Math.ceil((new Date(item.date) - new Date(today.getFullYear(), 0, 1)) / (7 * 24 * 60 * 60 * 1000));
+      return itemWeek >= currentWeek && itemWeek < currentWeek + 5;
+    });
+
+    res.render('bulletinDisplay', { data: filteredData });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching bulletin data');
+  }
 });
 
 
@@ -183,6 +225,20 @@ app.use(function (err, req, res, next) {
     error: process.env.NODE_ENV !== 'production' ? err : {}
   });
 });
+const indexRoutes = require('./routes/index2CFM');
+app.use('/index2CFM', indexRoutes);
+
+// Routes from both projects
+// const project1Routes = require('./routes/project1');
+// const project2Routes = require('./routes/project2');
+
+// app.use('/project1', project1Routes);
+// app.use('/project2', project2Routes);
+
+
+mongoose.connect('mongodb://localhost:27017/Sacrament')
+  .then(() => console.log('MongoDB connected to comefollowme database'))
+  .catch(err => console.error(err));
 
 // http.createServer(app)
 //   .listen(port, () => {

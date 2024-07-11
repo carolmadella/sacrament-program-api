@@ -9,3 +9,7 @@ I added the swagger to the script in the server.js file, and made a small change
 I added the api-docs link to the navigation in nav.ejs.
 
 
+7-7 Update
+Menu working,
+login and logout works
+added axios, cheerio, mongoose dependancy for dataroutes

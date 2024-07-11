@@ -1,0 +1,31 @@
+<!-- views/partials/footer.ejs -->
+<!-- </main>
+<footer>
+    <p>&copy; 2024 Sacrament Meeting Program Website</p>
+</footer>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Come Follow Me Lessons</title>
+</head>
+<body>
+  <h1>Collected Lessons</h1>
+  <ul>
+    <% lessons.forEach(lesson => { %>
+      <li>
+        <strong>Week Number:</strong> <%= lesson.weekNumber %> <br>
+        <strong>URL:</strong> <a href="<%= lesson.url %>"><%= lesson.url %></a> <br>
+        <strong>Title:</strong> <%= lesson.title %> <br>
+        <strong>Date Range:</strong> <%= lesson.dateRange %> <br>
+        <strong>Scripture:</strong> <%= lesson.scripture %> <br>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/">Back to form</a>
+</body>
+</html>
