@@ -107,6 +107,9 @@ router.get('/announcement', (req, res) => {
 router.get('/addpicure', (req, res) => {
   res.render('addpicure', { title: 'Add Picure' });
 });
+router.get('/addQuotes', (req, res) => {
+  res.render('addQuotes', { title: 'Add Quotes' });
+});
 router.get('/sacrament', (req, res) => {
   res.render('sacrament', { title: 'Sacrament' });
 });
