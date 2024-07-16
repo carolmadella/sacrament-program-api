@@ -1,6 +1,5 @@
-const mongodb = require("../mongo.js");
-const ObjectId = require('mongodb').ObjectId;
-
+const mongodb = require("../mongo.js")
+const ObjectId = require('mongodb').ObjectId
 
 // GET Request
 const getAllAnnouncements = (req, res) => {
@@ -13,20 +12,18 @@ const getAllAnnouncements = (req, res) => {
             if (err) {
                 res.status(400).json({
                     message: err
-                });
+                })
             }
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).json(lists);
-
+            res.setHeader('Content-Type', 'application/json')
+            res.status(200).json(lists)
         })
-
-};
+}
 
 const getAnnouncementById = (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid announcement id to find a disease.');
+        res.status(400).json('Must use a valid announcement id to find a disease.')
     }
-    const announcementId = new ObjectId(req.params.id);
+    const announcementId = new ObjectId(req.params.id)
     mongodb
         .getDb()
         .db()
@@ -38,12 +35,12 @@ const getAnnouncementById = (req, res) => {
             if (err) {
                 res.status(400).json({
                     message: err
-                });
+                })
             }
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).json(result[0]);
-        });
-};
+            res.setHeader('Content-Type', 'application/json')
+            res.status(200).json(result[0])
+        })
+}
 
 const createAnnouncement = async (req, res) => {
     const announcement = {
@@ -55,20 +52,20 @@ const createAnnouncement = async (req, res) => {
         speakersBio: req.body.speakersBio,
         prayers: req.body.prayers,
         bishop: req.body.bishop
-    };
-    const response = await mongodb.getDb().db().collection('announcement').insertOne(announcement);
-    if (response.acknowledged) {
-        res.status(201).json(response);
-    } else {
-        res.status(500).json(response.error || 'Some error occurred while recording the announcement.');
     }
-};
+    const response = await mongodb.getDb().db().collection('announcement').insertOne(announcement)
+    if (response.acknowledged) {
+        res.status(201).json(response)
+    } else {
+        res.status(500).json(response.error || 'Some error occurred while recording the announcement.')
+    }
+}
 
 const updateAnnouncement = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid disease id to update a announcement.');
+        res.status(400).json('Must use a valid disease id to update a announcement.')
     }
-    const announcementId = new ObjectId(req.params.id);
+    const announcementId = new ObjectId(req.params.id)
     // be aware of updateOne if you only want to update specific fields
     const announcement = {
         bishopric: req.body.bishop,
@@ -79,37 +76,37 @@ const updateAnnouncement = async (req, res) => {
         speakersBio: req.body.speakersBio,
         prayers: req.body.prayers,
         bishop: req.body.bishop
-    };
+    }
     const response = await mongodb
         .getDb()
         .db()
         .collection('announcement')
         .replaceOne({
             _id: announcementId
-        }, announcement);
-    console.log(response);
+        }, announcement)
+    console.log(response)
     if (response.modifiedCount > 0) {
-        res.status(204).send();
+        res.status(204).send()
     } else {
-        res.status(500).json(response.error || 'Some error occurred while updating announcement.');
+        res.status(500).json(response.error || 'Some error occurred while updating announcement.')
     }
-};
+}
 
 const deleteAnnouncement = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid announcement id to delete announcement.');
+        res.status(400).json('Must use a valid announcement id to delete announcement.')
     }
-    const announcementId = new ObjectId(req.params.id);
+    const announcementId = new ObjectId(req.params.id)
     const response = await mongodb.getDb().db().collection('announcement').deleteOne({
         _id: announcementId
-    }, true);
+    }, true)
     console.log(response);
     if (response.deletedCount > 0) {
-        res.status(204).send();
+        res.status(204).send()
     } else {
-        res.status(500).json(response.error || 'Some error occurred while deleting announcement.');
+        res.status(500).json(response.error || 'Some error occurred while deleting announcement.')
     }
-};
+}
 
 module.exports = {
     getAllAnnouncements,
@@ -117,4 +114,4 @@ module.exports = {
     createAnnouncement,
     updateAnnouncement,
     deleteAnnouncement
-};
+}
