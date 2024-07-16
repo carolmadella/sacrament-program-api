@@ -1,7 +1,6 @@
 const mongodb = require("../mongo.js");
 const ObjectId = require('mongodb').ObjectId;
 
-
 // GET Request
 const getAllMeetings = (req, res) => {
     mongodb
@@ -17,9 +16,7 @@ const getAllMeetings = (req, res) => {
             }
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(lists);
-
         })
-
 };
 
 const getMeetingsById = (req, res) => {
