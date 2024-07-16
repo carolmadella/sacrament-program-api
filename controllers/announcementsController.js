@@ -44,7 +44,9 @@ const getAnnouncementById = (req, res) => {
 
 const createAnnouncement = async (req, res) => {
     const announcement = {
+        activityType: req.body.type,
         activityName: req.body.name,
+        activityId: req.body.id,
         activityAttendees: req.body.auxillary,
         activityDate: req.body.date,
         activityTimeStart: req.body.startTime,
@@ -67,7 +69,9 @@ const updateAnnouncement = async (req, res) => {
     const announcementId = new ObjectId(req.params.id)
     // be aware of updateOne if you only want to update specific fields
     const announcement = {
+        activityType: req.body.type,
         activityName: req.body.name,
+        activityId: req.body.id,
         activityAttendees: req.body.auxillary,
         activityDate: req.body.date,
         activityTimeStart: req.body.startTime,
