@@ -44,14 +44,15 @@ const getMeetingsById = (req, res) => {
 
 const createMeeting = async (req, res) => {
     const meeting = {
-        bishopric: req.body.bishop,
-        conductor: req.body.conductor,
-        chorister: req.body.chorister,
-        accompanist: req.body.accompanist,
-        speakers: req.body.speakers,
-        speakersBio: req.body.speakersBio,
-        prayers: req.body.prayers,
-        bishop: req.body.bishop
+        activityType: req.body.type,
+        activityName: req.body.name,
+        activityId: req.body.id,
+        activityAttendees: req.body.auxillary,
+        activityDate: req.body.date,
+        activityTimeStart: req.body.startTime,
+        activityTimeEnd: req.body.endTime,
+        activityLocation: req.body.location,
+        activityDescription: req.body.description
     }
     const response = await mongodb.getDb().db().collection('meeting').insertOne(meeting)
     if (response.acknowledged) {
@@ -68,14 +69,15 @@ const updateMeeting = async (req, res) => {
     const meetingId = new ObjectId(req.params.id)
     // be aware of updateOne if you only want to update specific fields
     const meeting = {
-        bishopric: req.body.bishop,
-        conductor: req.body.conductor,
-        chorister: req.body.chorister,
-        accompanist: req.body.accompanist,
-        speakers: req.body.speakers,
-        speakersBio: req.body.speakersBio,
-        prayers: req.body.prayers,
-        bishop: req.body.bishop
+        activityType: req.body.type,
+        activityName: req.body.name,
+        activityId: req.body.id,
+        activityAttendees: req.body.auxillary,
+        activityDate: req.body.date,
+        activityTimeStart: req.body.startTime,
+        activityTimeEnd: req.body.endTime,
+        activityLocation: req.body.location,
+        activityDescription: req.body.description
     }
     const response = await mongodb
         .getDb()
