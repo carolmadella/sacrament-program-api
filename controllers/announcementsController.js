@@ -44,14 +44,13 @@ const getAnnouncementById = (req, res) => {
 
 const createAnnouncement = async (req, res) => {
     const announcement = {
-        bishopric: req.body.bishop,
-        conductor: req.body.conductor,
-        chorister: req.body.chorister,
-        accompanist: req.body.accompanist,
-        speakers: req.body.speakers,
-        speakersBio: req.body.speakersBio,
-        prayers: req.body.prayers,
-        bishop: req.body.bishop
+        activityName: req.body.name,
+        activityAttendees: req.body.auxillary,
+        activityDate: req.body.date,
+        activityTimeStart: req.body.startTime,
+        activityTimeEnd: req.body.endTime,
+        activityLocation: req.body.location,
+        activityDescription: req.body.description,
     }
     const response = await mongodb.getDb().db().collection('announcement').insertOne(announcement)
     if (response.acknowledged) {
@@ -68,14 +67,13 @@ const updateAnnouncement = async (req, res) => {
     const announcementId = new ObjectId(req.params.id)
     // be aware of updateOne if you only want to update specific fields
     const announcement = {
-        bishopric: req.body.bishop,
-        conductor: req.body.conductor,
-        chorister: req.body.chorister,
-        accompanist: req.body.accompanist,
-        speakers: req.body.speakers,
-        speakersBio: req.body.speakersBio,
-        prayers: req.body.prayers,
-        bishop: req.body.bishop
+        activityName: req.body.name,
+        activityAttendees: req.body.auxillary,
+        activityDate: req.body.date,
+        activityTimeStart: req.body.startTime,
+        activityTimeEnd: req.body.endTime,
+        activityLocation: req.body.location,
+        activityDescription: req.body.description,
     }
     const response = await mongodb
         .getDb()
