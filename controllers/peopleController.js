@@ -19,7 +19,6 @@ const getAllPeople = (req, res) => {
             res.status(200).json(lists);
 
         })
-
 };
 
 const getPeopleById = (req, res) => {
@@ -115,5 +114,6 @@ module.exports = {
     getAllPeople,
     getPeopleById,
     createPeople,
+    updatePeople,
     deletePeople
 };

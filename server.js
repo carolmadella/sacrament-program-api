@@ -7,11 +7,16 @@ const path = require('path');
 const router = require('./routes/index');
 
 
-const { swaggerUi , swaggerSpec } = require('./swagger');
+const {
+  swaggerUi,
+  swaggerSpec
+} = require('./swagger');
 var app = express();
 
 // const express = require('express');
-const { auth } = require('express-openid-connect');
+const {
+  auth
+} = require('express-openid-connect');
 
 // const app = express();
 
@@ -32,7 +37,9 @@ const options = {
       title: "CSE341 Sacrament Meeting Program API",
       version: "1.0.0",
     },
-    servers: [{ url: `${process.env.URL}:${process.env.PORT}` }],
+    servers: [{
+      url: `${process.env.URL}:${process.env.PORT}`
+    }],
   },
   swaggerDefinition: swaggerDoc,
   apis: ["./api-docs/*.js"], // Use a global pattern to include all route files
@@ -46,7 +53,9 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 // Use CORS middleware
 app.use(cors());
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 // parse application/json
 app.use(bodyParser.json());
 
@@ -54,9 +63,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // IMPORT ALL ROUTES HERE
 const hymnsRoutes = require('./routes/hymnsRoutes');
+const peopleRoutes = require('./routes/people');
 
-
-const { requiresAuth } = require('express-openid-connect');
+const {
+  requiresAuth
+} = require('express-openid-connect');
 
 router.get('/', function (req, res, next) {
   res.render('index', {
@@ -72,48 +83,66 @@ app.use('/hymns', hymnsRoutes);
 
 app.use('/hymns', hymnsRoutes);
 
+app.use('/people', peopleRoutes);
+
 
 // app.get('/', (req, res) => {
 //   res.render('index', { title: 'Home' });
 // });
 router.get('/about', (req, res, next) => {
-  res.render('about', { title: 'about',
-    isAuthenticated: req.oidc.isAuthenticated() });
+  res.render('about', {
+    title: 'about',
+    isAuthenticated: req.oidc.isAuthenticated()
+  });
 });
 
 router.get('/myProfile', (req, res, next) => {
-  res.render('myProfile', { title: 'My Profile',
+  res.render('myProfile', {
+    title: 'My Profile',
     userProfile: JSON.stringify(req.oidc.user, null, 2),
-    isAuthenticated: req.oidc.isAuthenticated() });
+    isAuthenticated: req.oidc.isAuthenticated()
+  });
 });
 
 router.get('/additionalinformation', (req, res) => {
-  res.render('additionalinformation', { title: 'Additional Information' });
+  res.render('additionalinformation', {
+    title: 'Additional Information'
+  });
 });
 router.get('/ComeFollowMe', (req, res, next) => {
-  res.render('ComeFollowMe', { title: 'Come Follow Me',
+  res.render('ComeFollowMe', {
+    title: 'Come Follow Me',
     isAuthenticated: req.oidc.isAuthenticated()
-   });
+  });
 });
 
 router.get('/leadership', (req, res) => {
-  res.render('leadership', { title: 'Leadership' });
+  res.render('leadership', {
+    title: 'Leadership'
+  });
 });
 
 router.get('/announcement', (req, res) => {
-  res.render('announcement', { title: 'Announcement' });
+  res.render('announcement', {
+    title: 'Announcement'
+  });
 });
 
 router.get('/addpicure', (req, res) => {
-  res.render('addpicure', { title: 'Add Picure' });
+  res.render('addpicure', {
+    title: 'Add Picure'
+  });
 });
 router.get('/sacrament', (req, res) => {
-  res.render('sacrament', { title: 'Sacrament' });
+  res.render('sacrament', {
+    title: 'Sacrament'
+  });
 });
 
 
-router.get('/profile',  (req, res) => {
-  res.render('profile', {title: 'Sacrament' 
+router.get('/profile', (req, res) => {
+  res.render('profile', {
+    title: 'Sacrament'
     // userProfile: JSON.stringify(req.oidc.user, null, 2),
     // title: 'Profile page',
     // isAuthenticated: req.oidc.isAuthenticated()
