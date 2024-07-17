@@ -6,7 +6,8 @@
     "version": "1.0.0"
   },
   "host": [
-    "localhost:3410"
+    "localhost:3410",
+    "sacrament-program-api-8pcq.onrender.com"
   ],
   "servers": [
     {
@@ -15,7 +16,8 @@
   ],
   "basePath": "/",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "securityDefinitions": {
     "oauth2": {
