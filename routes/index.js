@@ -1,24 +1,15 @@
-var router = require('express').Router();
-const { requiresAuth } = require('express-openid-connect');
+const express = require('express');
+const router = express.Router();
 
-router.get('/', function (req, res, next) {
-  res.render('index', {
-    title: 'Auth0 Webapp sample Nodejs',
-    isAuthenticated: req.oidc.isAuthenticated()
-  });
-});
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
 
-// router.get('/profile',  function (req, res, next) {
-//   res.render('profile', {
-//     // userProfile: JSON.stringify(req.oidc.user, null, 2),
-//     title: 'Profile page',
-//     isAuthenticated: req.oidc.isAuthenticated()
-//   });
-// });
-router.get('/profile', requiresAuth(), function (req, res, next) {
-  res.render('profile', {
-    userProfile: JSON.stringify(req.oidc.user, null, 2),
-    title: 'Profile page'
-  });
-});
+router.use('/api-docs', swaggerUi.serve);
+router.get('/api-docs', swaggerUi.setup(swaggerDocument));
+
+router.use('/meetings', require('./meetings'))
+router.use('/announcements', require('./announcements'))
+router.use('/activities', require('./activities'))
+router.use('/needHelp', require('./needHelp'))
+
 module.exports = router;

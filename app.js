@@ -4,6 +4,7 @@ const mongodb = require('./db/connect');
 const port = process.env.PORT || 8080;
 const app = express();
 
+
 app
     .use(bodyParser.json())
     .use((req, res, next) => {
@@ -11,12 +12,11 @@ app
         next();
     })
     .use('/', require('./routes'));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
-process.on('uncaughtException', (err, origin) => {
-    console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
-});
-
-mongodb.initDb((err) => {
+mongodb.initDb((err, mongodb) => {
     if (err) {
         console.log(err);
     } else {
