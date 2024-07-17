@@ -6,15 +6,16 @@ const doc = {
         description: 'Description'
     },
     host: [
-        'localhost:3410',
+        // 'localhost:3410',
         'sacrament-program-api-8pcq.onrender.com'
     ],
     schemes: [
-        'http', 'https'
+        // 'http', 
+        'https'
     ],
     servers: [{
         url: 'http://localhost:3410', // Change this to your actual server URL
-        url: 'https://sacrament-program-api.onrender.com/', // Change this to your actual server URL
+        url: 'https://sacrament-program-api-8pcq.onrender.com', // Change this to your actual server URL
     }],
     securityDefinitions: {
         oauth2: {
