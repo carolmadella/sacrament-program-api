@@ -303,7 +303,39 @@
         "500": {
           "description": "Internal Server Error"
         }
-      }
+      },
+    "definitions": {
+      "Meeting": {
+        "type": "object",
+        "required": ["date", "location"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "location": {
+            "type": "string"
+          },
+          "announcements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/announcement"
+            }
+          },
+          "stakeAnnouncements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/StakeAnnouncement"
+            }
+          },
+          "callingAnnouncements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CallingAnnouncement"
+            }
+          }
     }
   }
+}
+    }}
 }

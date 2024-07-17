@@ -691,22 +691,10 @@
           "location": {
             "type": "string"
           },
-          "generalAnnouncements": {
+          "announcements": {
             "type": "array",
             "items": {
-              "$ref": "#/definitions/GeneralAnnouncement"
-            }
-          },
-          "stakeAnnouncements": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/StakeAnnouncement"
-            }
-          },
-          "callingAnnouncements": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/CallingAnnouncement"
+              "$ref": "#/definitions/announcement"
             }
           },
           "speakers": {
@@ -723,25 +711,7 @@
           }
         }
       },
-      "GeneralAnnouncement": {
-        "type": "object",
-        "required": ["message"],
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        }
-      },
-      "StakeAnnouncement": {
-        "type": "object",
-        "required": ["message"],
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        }
-      },
-      "CallingAnnouncement": {
+      "Announcement": {
         "type": "object",
         "required": ["message"],
         "properties": {

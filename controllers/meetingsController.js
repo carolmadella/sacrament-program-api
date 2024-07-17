@@ -44,17 +44,21 @@ const getMeetingsById = (req, res) => {
 
 const createMeeting = async (req, res) => {
     const meeting = {
-        activityType: req.body.type,
-        activityName: req.body.name,
-        activityId: req.body.id,
-        activityAttendees: req.body.auxillary,
-        activityDate: req.body.date,
-        activityTimeStart: req.body.startTime,
-        activityTimeEnd: req.body.endTime,
-        activityLocation: req.body.location,
-        activityDescription: req.body.description
+        meetingId: req.body.id,
+        meetingName: req.body.name,
+        meetingDate: req.body.date,
+        meetingType: req.body.type,
+        meetingLocation: req.body.location,
+        announcements: req.body.announcements,
+        speakers: req.body.speakers,
+        hymns: req.body.hymns
     }
-    const response = await mongodb.getDb().db().collection('meeting').insertOne(meeting)
+    const response = await 
+    mongodb
+    .getDb()
+    .db()
+    .collection('meeting')
+    .insertOne(meeting)
     if (response.acknowledged) {
         res.status(201).json(response)
     } else {
@@ -69,15 +73,14 @@ const updateMeeting = async (req, res) => {
     const meetingId = new ObjectId(req.params.id)
     // be aware of updateOne if you only want to update specific fields
     const meeting = {
-        activityType: req.body.type,
-        activityName: req.body.name,
-        activityId: req.body.id,
-        activityAttendees: req.body.auxillary,
-        activityDate: req.body.date,
-        activityTimeStart: req.body.startTime,
-        activityTimeEnd: req.body.endTime,
-        activityLocation: req.body.location,
-        activityDescription: req.body.description
+        meetingId: req.body.id,
+        meetingName: req.body.name,
+        meetingDate: req.body.date,
+        meetingType: req.body.type,
+        meetingLocation: req.body.location,
+        announcements: req.body.announcements,
+        speakers: req.body.speakers,
+        hymns: req.body.hymns
     }
     const response = await mongodb
         .getDb()
