@@ -9,11 +9,9 @@
     "localhost:3410",
     "sacrament-program-api-8pcq.onrender.com"
   ],
-  "servers": [
-    {
-      "url": "https://sacrament-program-api.onrender.com/"
-    }
-  ],
+  "servers": [{
+    "url": "https://sacrament-program-api.onrender.com/"
+  }],
   "basePath": "/",
   "schemes": [
     "http",
@@ -29,16 +27,6 @@
     }
   },
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/meetings/": {
       "get": {
         "description": "",
@@ -56,50 +44,48 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "bishop": {
-                  "example": "any"
-                },
-                "conductor": {
-                  "example": "any"
-                },
-                "chorister": {
-                  "example": "any"
-                },
-                "accompanist": {
-                  "example": "any"
-                },
-                "openingHymn": {
-                  "example": "any"
-                },
-                "openingPrayer": {
-                  "example": "any"
-                },
-                "speaker1": {
-                  "example": "any"
-                },
-                "speaker2": {
-                  "example": "any"
-                },
-                "speaker3": {
-                  "example": "any"
-                },
-                "closingHymn": {
-                  "example": "any"
-                },
-                "closingPrayer": {
-                  "example": "any"
-                }
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "bishop": {
+                "example": "any"
+              },
+              "conductor": {
+                "example": "any"
+              },
+              "chorister": {
+                "example": "any"
+              },
+              "accompanist": {
+                "example": "any"
+              },
+              "openingHymn": {
+                "example": "any"
+              },
+              "openingPrayer": {
+                "example": "any"
+              },
+              "speaker1": {
+                "example": "any"
+              },
+              "speaker2": {
+                "example": "any"
+              },
+              "speaker3": {
+                "example": "any"
+              },
+              "closingHymn": {
+                "example": "any"
+              },
+              "closingPrayer": {
+                "example": "any"
               }
             }
           }
-        ],
+        }],
         "responses": {
           "201": {
             "description": "Created"
@@ -119,14 +105,12 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
@@ -138,8 +122,7 @@
       },
       "put": {
         "description": "",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "id",
             "in": "path",
             "required": true,
@@ -205,14 +188,12 @@
       },
       "delete": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "204": {
             "description": "No Content"
@@ -243,20 +224,18 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "announcement": {
-                  "example": "any"
-                }
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "announcement": {
+                "example": "any"
               }
             }
           }
-        ],
+        }],
         "responses": {
           "201": {
             "description": "Created"
@@ -276,14 +255,12 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
@@ -295,8 +272,7 @@
       },
       "put": {
         "description": "",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "id",
             "in": "path",
             "required": true,
@@ -332,14 +308,12 @@
       },
       "delete": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "204": {
             "description": "No Content"
@@ -370,32 +344,30 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "date": {
-                  "example": "any"
-                },
-                "startTime": {
-                  "example": "any"
-                },
-                "endTime": {
-                  "example": "any"
-                },
-                "place": {
-                  "example": "any"
-                },
-                "activity": {
-                  "example": "any"
-                }
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "date": {
+                "example": "any"
+              },
+              "startTime": {
+                "example": "any"
+              },
+              "endTime": {
+                "example": "any"
+              },
+              "place": {
+                "example": "any"
+              },
+              "activity": {
+                "example": "any"
               }
             }
           }
-        ],
+        }],
         "responses": {
           "201": {
             "description": "Created"
@@ -415,14 +387,12 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
@@ -434,8 +404,7 @@
       },
       "put": {
         "description": "",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "id",
             "in": "path",
             "required": true,
@@ -483,14 +452,12 @@
       },
       "delete": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "204": {
             "description": "No Content"
@@ -521,32 +488,30 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "contact": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "phone": {
-                  "example": "any"
-                },
-                "whatHelpINeed": {
-                  "example": "any"
-                }
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "example": "any"
+              },
+              "contact": {
+                "example": "any"
+              },
+              "email": {
+                "example": "any"
+              },
+              "phone": {
+                "example": "any"
+              },
+              "whatHelpINeed": {
+                "example": "any"
               }
             }
           }
-        ],
+        }],
         "responses": {
           "201": {
             "description": "Created"
@@ -566,14 +531,12 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "200": {
             "description": "OK"
@@ -585,8 +548,7 @@
       },
       "put": {
         "description": "",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "id",
             "in": "path",
             "required": true,
@@ -634,14 +596,12 @@
       },
       "delete": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
         "responses": {
           "204": {
             "description": "No Content"
