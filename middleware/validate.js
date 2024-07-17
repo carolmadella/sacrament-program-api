@@ -1,26 +1,5 @@
 const validator = require('../helpers/validate');
 
-const saveContact = (req, res, next) => {
-    const validationRule = {
-        firstName: 'required|string',
-        lastName: 'required|string',
-        email: 'required|email',
-        favoriteColor: 'required|string',
-        birthday: 'string'
-    };
-    validator(req.body, validationRule, {}, (err, status) => {
-        if (!status) {
-            res.status(412).send({
-                success: false,
-                message: 'Validation failed',
-                data: err
-            });
-        } else {
-            next();
-        }
-    });
-};
-
 const saveMeeting = (req, res, next) => {
     const validationRule = {
         bishop: 'required|string',
@@ -29,6 +8,7 @@ const saveMeeting = (req, res, next) => {
         accompanist: 'required|string',
         openingHymn: 'required|string',
         openingPrayer: 'required|string',
+        theme: 'required|string',
         speaker1: 'required|string',
         speaker2: 'required|string',
         speaker3: 'required|string',
