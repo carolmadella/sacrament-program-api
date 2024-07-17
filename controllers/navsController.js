@@ -11,7 +11,6 @@ const form_additionalinformation = (req, res) => {
     res.render('additionalinformation', { title: 'Additional Information' });
 }
 
-
 module.exports = {
     form_sacrament
 };

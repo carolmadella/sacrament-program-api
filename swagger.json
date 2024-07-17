@@ -425,37 +425,31 @@
       },
       "/speakers/{id}": {
         "get": {
-          "summary": "Get a speaker by ID",
-          "description": "Retrieve a speaker by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the speaker to retrieve",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Speaker retrieved successfully",
-              "schema": {
-                "$ref": "#/definitions/Speaker"
-              }
-            },
-            "404": {
-              "description": "Speaker not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
+          "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "bishopric":"Bishop CJ",
+            "conductor":"Bishop CJ",
+            "chorister":"Bishop CJ",
+            "accompanist":"Bishop CJ",
+            "speakers":"Bishop CJ",
+            "speakersBio":"Bishop CJ",
+            "prayers":"Bishop CJ",
+            "bishop":"Bishop CJ"
           }
-        },
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
         "put": {
           "summary": "Update a speaker by ID",
           "description": "Update an existing speaker by its ID.",
@@ -466,11 +460,14 @@
           ],
           "parameters": [
             {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the speaker to update",
-              "required": true,
-              "type": "string"
+              "bishopric":"Bishop CJ",
+              "conductor":"Bishop CJ",
+              "chorister":"Bishop CJ",
+              "accompanist":"Bishop CJ",
+              "speakers":"Bishop CJ",
+              "speakersBio":"Bishop CJ",
+              "prayers":"Bishop CJ",
+              "bishop":"Bishop CJ"
             },
             {
               "name": "body",
@@ -504,11 +501,14 @@
           ],
           "parameters": [
             {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the speaker to delete",
-              "required": true,
-              "type": "string"
+              "bishopric":"Bishop CJ",
+              "conductor":"Bishop CJ",
+              "chorister":"Bishop CJ",
+              "accompanist":"Bishop CJ",
+              "speakers":"Bishop CJ",
+              "speakersBio":"Bishop CJ",
+              "prayers":"Bishop CJ",
+              "bishop":"Bishop CJ"
             }
           ],
           "responses": {

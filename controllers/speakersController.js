@@ -2,7 +2,7 @@ const mongodb = require("../mongo.js");
 const ObjectId = require('mongodb').ObjectId;
 
 // GET Request
-const getAllPeople = (req, res) => {
+const getAllSpeakers = (req, res) => {
     mongodb
         .getDb()
         .db()
@@ -19,11 +19,11 @@ const getAllPeople = (req, res) => {
         })
 };
 
-const getPeopleById = (req, res) => {
+const getSpeakerById = (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must use a valid people id to find a disease.');
     }
-    const peopleId = new ObjectId(req.params.id);
+    const speakersId = new ObjectId(req.params.id);
     mongodb
         .getDb()
         .db()
@@ -42,8 +42,8 @@ const getPeopleById = (req, res) => {
         });
 };
 
-const createPeople = async (req, res) => {
-    const people = {
+const createSpeaker = async (req, res) => {
+    const speaker = {
         bishopric: req.body.bishop,
         conductor: req.body.conductor,
         chorister: req.body.chorister,
@@ -61,11 +61,11 @@ const createPeople = async (req, res) => {
     }
 };
 
-const updatePeople = async (req, res) => {
+const updateSpeaker = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must use a valid disease id to update a people.');
     }
-    const peopleId = new ObjectId(req.params.id);
+    const speakersId = new ObjectId(req.params.id);
     // be aware of updateOne if you only want to update specific fields
     const people = {
         bishopric: req.body.bishop,
@@ -82,7 +82,7 @@ const updatePeople = async (req, res) => {
         .db()
         .collection('people')
         .replaceOne({
-            _id: peopleId
+            _id: speakersId
         }, people);
     console.log(response);
     if (response.modifiedCount > 0) {
@@ -92,13 +92,13 @@ const updatePeople = async (req, res) => {
     }
 };
 
-const deletePeople = async (req, res) => {
+const deleteSpeaker = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must use a valid people id to delete people.');
     }
-    const peopleId = new ObjectId(req.params.id);
+    const speakersId = new ObjectId(req.params.id);
     const response = await mongodb.getDb().db().collection('people').deleteOne({
-        _id: peopleId
+        _id: speakersId
     }, true);
     console.log(response);
     if (response.deletedCount > 0) {
@@ -109,9 +109,9 @@ const deletePeople = async (req, res) => {
 };
 
 module.exports = {
-    getAllPeople,
-    getPeopleById,
-    createPeople,
-    updatePeople,
-    deletePeople
+    getAllSpeakers,
+    getSpeakerById,
+    createSpeaker,
+    updateSpeaker,
+    deleteSpeaker
 };

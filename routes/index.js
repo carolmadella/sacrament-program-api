@@ -1,7 +1,12 @@
-var router = require('express').Router();
+const router = require('express').Router();
 const { requiresAuth } = require('express-openid-connect');
 
-router.get('/', function (req, res, next) {
+router
+  //.use('/', require('./swagger'))
+  .use('/people', require('./people'))
+  .use('/hymnsRoutes', require('./hymnsRoutes'))
+
+  .get('/', function (req, res, next) {
   res.render('index', {
     title: 'Auth0 Webapp sample Nodejs',
     isAuthenticated: req.oidc.isAuthenticated()

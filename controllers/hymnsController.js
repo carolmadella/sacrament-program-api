@@ -16,7 +16,7 @@ exports.getHymnById = async (req, res) => {
   }
 
   try {
-    const db = await mongodb.connectDB();
+    const db = await mongodb.initDb();
 
     // Get a reference to the collection
     const collection = db.collection("hymns");
@@ -45,7 +45,7 @@ exports.createHymn = async (req, res) => {
   }
 
   try {
-    const db = await mongodb.connectDB();
+    const db = await mongodb.initDb();
     const collection = db.collection("hymns");
 
     // Insert data into the collection
@@ -73,7 +73,7 @@ exports.updateHymn = async (req, res) => {
     }
   
     try {
-      const db = await mongodb.connectDB();
+      const db = await mongodb.initDb();
       const collection = db.collection("hymns");
   
       // Update the hymn by ID
@@ -105,7 +105,7 @@ exports.deleteHymn = async (req, res) => {
     return res.status(404).json({ error: "invalid input provided" });
   }
   try {
-    const db = await mongodb.connectDB();
+    const db = await mongodb.initDb();
     const collection = db.collection("hymns");
 
     // Delete the hymn by ID

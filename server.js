@@ -1,22 +1,20 @@
-var express = require("express");
+const express = require("express");
 const cors = require("cors");
-var bodyParser = require("body-parser");
-const http = require('http');
+const bodyParser = require("body-parser");
+//const http = require('http');
 const logger = require('morgan');
 const path = require('path');
 const router = require('./routes/index');
-
+const port = process.env.PORT || 3410;
 
 const { swaggerUi , swaggerSpec } = require('./swagger');
-var app = express();
+const app = express();
 
 // const express = require('express');
 const { auth } = require('express-openid-connect');
 
 // const app = express();
-
 // const path = require('path');
-
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
 
@@ -153,7 +151,7 @@ const config = {
 // });
 
 
-const port = process.env.PORT || 3410;
+
 if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {
   config.baseURL = `http://localhost:${port}`;
 }
