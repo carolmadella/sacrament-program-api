@@ -6,11 +6,12 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "swagger": "node ./swagger.js"
+    "swagger": "node ./swagger.js",
+    "swagger-autogen": "node swagger2.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/carolmadella/sacrament-program-api.git"
+    "url": "https://github.com/carolmadella/sacrament-program-api.git"
   },
   "author": "",
   "license": "ISC",
@@ -26,17 +27,18 @@
     "express": "^4.19.2",
     "express-openid-connect": "^2.17.1",
     "express-session": "^1.18.0",
+    "express-validator": "^7.1.0",
     "http-errors": "^2.0.0",
     "mongodb": "^6.7.0",
     "morgan": "^1.10.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "swagger-autogen": "^2.23.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "swagger-autogen": "^2.23.7"
   },
   "keywords": []
 }

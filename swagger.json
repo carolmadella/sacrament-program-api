@@ -1,445 +1,42 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "title": "Sacrament Meeting Program API",
-      "description": "API for managing sacrament meeting agendas in a Latter-day Saint church",
-      "version": "1.0.0"
-    },
-    "host": "sacrament-program-api.onrender.com",
-    "basePath": "/",
-    "schemes": [
-      "https"
-    ],
-    "securityDefinitions": {
-      "Bearer": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header"
+  "swagger": "2.0",
+  "info": {
+    "title": "Sacrament API",
+    "description": "Sacrament API",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3410",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     },
-    "paths": {
-      "/login": {
-        "post": {
-          "summary": "Log in",
-          "description": "Log in with username and password to receive a JWT token.",
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "description": "User credentials",
-              "required": true,
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "username": {
-                    "type": "string"
-                  },
-                  "password": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "JWT token",
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "accessToken": {
-                    "type": "string"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
+    "/profile": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
-      },
-      "/meetings": {
-        "get": {
-          "summary": "Get all meetings",
-          "description": "Retrieve a list of all meetings.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "List of meetings",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Meeting"
-                }
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "post": {
-          "summary": "Create a new meeting",
-          "description": "Add a new meeting to the database.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Meeting object to be created",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Meeting"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Meeting created successfully"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/meetings/{id}": {
-        "get": {
-          "summary": "Get a meeting by ID",
-          "description": "Retrieve a meeting by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the meeting to retrieve",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Meeting retrieved successfully",
-              "schema": {
-                "$ref": "#/definitions/Meeting"
-              }
-            },
-            "404": {
-              "description": "Meeting not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "put": {
-          "summary": "Update a meeting by ID",
-          "description": "Update an existing meeting by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the meeting to update",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Meeting object with updated data",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Meeting"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Meeting updated successfully"
-            },
-            "404": {
-              "description": "Meeting not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete a meeting by ID",
-          "description": "Delete an existing meeting by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the meeting to delete",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Meeting deleted successfully"
-            },
-            "404": {
-              "description": "Meeting not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/announcements": {
-        "get": {
-          "summary": "Get all Announcements",
-          "description": "Retrieve a list of all Announcements.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "List of Announcements",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Announcement"
-                }
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "post": {
-          "summary": "Create an Announcement",
-          "description": "Add a New Announcement to a Meeting.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Announcement object to be Created",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Announcement"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Announcement Created Successfully"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/announcements/{id}": {
-        "get": {
-          "summary": "Get an Announcement by ID",
-          "description": "Retrieve an Announcement by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the Announcement to Retrieve",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Announcement Retrieved Successfully",
-              "schema": {
-                "$ref": "#/definitions/Announcement"
-              }
-            },
-            "404": {
-              "description": "Announcement Not Found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "put": {
-          "summary": "Update an Announcement by ID",
-          "description": "Update an Existing Announcement by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the Announcement to Update",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Announcement object with Updated Data",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/GeneralAnnouncement"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Announcement Updated Successfully"
-            },
-            "404": {
-              "description": "Announcement Not Found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete an Announcement by ID",
-          "description": "Delete an Existing Announcement by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the Announcement to delete",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Announcement Deleted Successfully"
-            },
-            "404": {
-              "description": "Announcement Not Found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/speakers": {
-        "get": {
-          "summary": "Get all speakers",
-          "description": "Retrieve a list of all speakers.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "List of speakers",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Speaker"
-                }
-              }
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "post": {
-          "summary": "Create a speaker",
-          "description": "Add a new speaker to a meeting.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Speaker object to be created",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Speaker"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Speaker created successfully"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/speakers/{id}": {
-        "get": {
-          "description": "",
+      }
+    },
+    "/people/": {
+      "get": {
+        "description": "",
         "produces": [
           "application/json"
-        ],
-        "parameters": [
-          {
-            "bishopric":"Bishop CJ",
-            "conductor":"Bishop CJ",
-            "chorister":"Bishop CJ",
-            "accompanist":"Bishop CJ",
-            "speakers":"Bishop CJ",
-            "speakersBio":"Bishop CJ",
-            "prayers":"Bishop CJ",
-            "bishop":"Bishop CJ"
-          }
         ],
         "responses": {
           "200": {
@@ -450,330 +47,235 @@
           }
         }
       },
-        "put": {
-          "summary": "Update a speaker by ID",
-          "description": "Update an existing speaker by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "bishopric":"Bishop CJ",
-              "conductor":"Bishop CJ",
-              "chorister":"Bishop CJ",
-              "accompanist":"Bishop CJ",
-              "speakers":"Bishop CJ",
-              "speakersBio":"Bishop CJ",
-              "prayers":"Bishop CJ",
-              "bishop":"Bishop CJ"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Speaker object with updated data",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Speaker"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Speaker updated successfully"
-            },
-            "404": {
-              "description": "Speaker not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete a speaker by ID",
-          "description": "Delete an existing speaker by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "bishopric":"Bishop CJ",
-              "conductor":"Bishop CJ",
-              "chorister":"Bishop CJ",
-              "accompanist":"Bishop CJ",
-              "speakers":"Bishop CJ",
-              "speakersBio":"Bishop CJ",
-              "prayers":"Bishop CJ",
-              "bishop":"Bishop CJ"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Speaker deleted successfully"
-            },
-            "404": {
-              "description": "Speaker not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        }
-      },
-      "/hymns": {
-        "get": {
-          "summary": "Get all hymns",
-          "description": "Retrieve a list of all hymns.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "List of hymns",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Hymn"
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bishop": {
+                  "example": "any"
+                },
+                "conductor": {
+                  "example": "any"
+                },
+                "chorister": {
+                  "example": "any"
+                },
+                "accompanist": {
+                  "example": "any"
+                },
+                "speakers": {
+                  "example": "any"
+                },
+                "speakersBio": {
+                  "example": "any"
+                },
+                "prayers": {
+                  "example": "any"
                 }
               }
-            },
-            "500": {
-              "description": "Internal Server Error"
             }
           }
-        },
-        "post": {
-          "summary": "Create a hymn",
-          "description": "Add a new hymn to a meeting.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Hymn object to be created",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Hymn"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Hymn created successfully"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
-      "/hymns/{id}": {
-        "get": {
-          "summary": "Get a hymn by ID",
-          "description": "Retrieve a hymn by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the hymn to retrieve",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Hymn retrieved successfully",
-              "schema": {
-                "$ref": "#/definitions/Hymn"
-              }
-            },
-            "404": {
-              "description": "Hymn not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
-          }
-        },
-        "put": {
-          "summary": "Update a hymn by ID",
-          "description": "Update an existing hymn by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the hymn to update",
-              "required": true,
-              "type": "string"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Hymn object with updated data",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Hymn"
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bishop": {
+                  "example": "any"
+                },
+                "conductor": {
+                  "example": "any"
+                },
+                "chorister": {
+                  "example": "any"
+                },
+                "accompanist": {
+                  "example": "any"
+                },
+                "speakers": {
+                  "example": "any"
+                },
+                "speakersBio": {
+                  "example": "any"
+                },
+                "prayers": {
+                  "example": "any"
+                }
               }
             }
-          ],
-          "responses": {
-            "200": {
-              "description": "Hymn updated successfully"
-            },
-            "404": {
-              "description": "Hymn not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bishop": {
+                  "example": "any"
+                },
+                "conductor": {
+                  "example": "any"
+                },
+                "chorister": {
+                  "example": "any"
+                },
+                "accompanist": {
+                  "example": "any"
+                },
+                "speakers": {
+                  "example": "any"
+                },
+                "speakersBio": {
+                  "example": "any"
+                },
+                "prayers": {
+                  "example": "any"
+                }
+              }
             }
           }
-        },
-        "delete": {
-          "summary": "Delete a hymn by ID",
-          "description": "Delete an existing hymn by its ID.",
-          "security": [
-            {
-              "Bearer": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID of the hymn to delete",
-              "required": true,
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Hymn deleted successfully"
-            },
-            "404": {
-              "description": "Hymn not found"
-            },
-            "500": {
-              "description": "Internal Server Error"
-            }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "definitions": {
-      "Meeting": {
-        "type": "object",
-        "required": ["date", "location"],
-        "properties": {
-          "date": {
-            "type": "string",
-            "format": "date"
-          },
-          "location": {
+    "/people/{id}": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
-          "generalAnnouncements": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/GeneralAnnouncement"
-            }
-          },
-          "stakeAnnouncements": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/StakeAnnouncement"
-            }
-          },
-          "callingAnnouncements": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/CallingAnnouncement"
-            }
-          },
-          "speakers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/Speaker"
-            }
-          },
-          "hymns": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/Hymn"
-            }
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/hymnsRoutes/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       },
-      "GeneralAnnouncement": {
-        "type": "object",
-        "required": ["message"],
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        }
-      },
-      "StakeAnnouncement": {
-        "type": "object",
-        "required": ["message"],
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        }
-      },
-      "CallingAnnouncement": {
-        "type": "object",
-        "required": ["message"],
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        }
-      },
-      "Speaker": {
-        "type": "object",
-        "required": ["name", "topic"],
-        "properties": {
-          "name": {
-            "type": "string"
+      "post": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
           },
-          "topic": {
-            "type": "string"
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
-      "Hymn": {
-        "type": "object",
-        "required": ["number", "title"],
-        "properties": {
-          "number": {
-            "type": "integer"
+      "put": {
+        "description": "",
+        "responses": {
+          "204": {
+            "description": "No Content"
           },
-          "title": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hymnsRoutes/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     }
   }
-  
+}

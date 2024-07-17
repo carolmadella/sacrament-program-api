@@ -3,7 +3,6 @@ const swaggerUi = require('swagger-ui-express');
 
 // Swagger definition
 const swaggerDefinition = {
-  openapi: '3.0.0',
   info: {
     title: 'Sacrament API',
     version: '1.0.0',
@@ -11,9 +10,11 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:3410', // Change this to your actual server URL
-      url: 'https://sacrament-program-api.onrender.com/', // Change this to your actual server URL
+      url: 'http://localhost:3410'
     },
+      {
+        url: 'https://sacrament-program-api.onrender.com/'
+      },      
   ],
 };
 
