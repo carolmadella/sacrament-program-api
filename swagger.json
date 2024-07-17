@@ -1,17 +1,31 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
+    "title": "Sacrament API",
     "description": "Description",
     "version": "1.0.0"
   },
   "host": [
-    "localhost:8080"
+    "localhost:3410"
+  ],
+  "servers": [
+    {
+      "url": "https://sacrament-program-api.onrender.com/"
+    }
   ],
   "basePath": "/",
   "schemes": [
     "http"
   ],
+  "securityDefinitions": {
+    "oauth2": {
+      "type": "oauth2",
+      "flow": "authorizationCode",
+      "authorizationUrl": "http://localhost:3410/auth/google/callback",
+      "tokenUrl": "http://localhost:3410/oauth/token",
+      "scopes": ""
+    }
+  },
   "paths": {
     "/api-docs": {
       "get": {
