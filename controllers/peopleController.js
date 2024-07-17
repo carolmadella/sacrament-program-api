@@ -23,7 +23,7 @@ const getAllPeople = (req, res) => {
 
 const getPeopleById = (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid people id to find a disease.');
+        res.status(400).json('Must use a valid people id to find people.');
     }
     const peopleId = new ObjectId(req.params.id);
     mongodb
