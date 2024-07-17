@@ -6,7 +6,7 @@ const getAllSpeakers = (req, res) => {
     mongodb
         .getDb()
         .db()
-        .collection('people')
+        .collection('speaker')
         .find()
         .toArray((err, lists) => {
             if (err) {
@@ -23,13 +23,13 @@ const getSpeakerById = (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
         res.status(400).json('Must use a valid people id to find a disease.');
     }
-    const speakersId = new ObjectId(req.params.id);
+    const speakerId = new ObjectId(req.params.id);
     mongodb
         .getDb()
         .db()
-        .collection('people')
+        .collection('speaker')
         .find({
-            _id: peopleId
+            _id: speakerId
         })
         .toArray((err, result) => {
             if (err) {
@@ -44,67 +44,55 @@ const getSpeakerById = (req, res) => {
 
 const createSpeaker = async (req, res) => {
     const speaker = {
-        bishopric: req.body.bishop,
-        conductor: req.body.conductor,
-        chorister: req.body.chorister,
-        accompanist: req.body.accompanist,
-        speakers: req.body.speakers,
-        speakersBio: req.body.speakersBio,
-        prayers: req.body.prayers,
-        bishop: req.body.bishop
+        name: req.body.name,
+        topic: req.body.topic
     };
-    const response = await mongodb.getDb().db().collection('people').insertOne(people);
+    const response = await mongodb.getDb().db().collection('speaker').insertOne(speaker);
     if (response.acknowledged) {
         res.status(201).json(response);
     } else {
-        res.status(500).json(response.error || 'Some error occurred while recording the people.');
+        res.status(500).json(response.error || 'Some error occurred while recording the speaker.');
     }
 };
 
 const updateSpeaker = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid disease id to update a people.');
+        res.status(400).json('Must use a valid disease id to update a speaker.');
     }
-    const speakersId = new ObjectId(req.params.id);
+    const speakerId = new ObjectId(req.params.id);
     // be aware of updateOne if you only want to update specific fields
-    const people = {
-        bishopric: req.body.bishop,
-        conductor: req.body.conductor,
-        chorister: req.body.chorister,
-        accompanist: req.body.accompanist,
-        speakers: req.body.speakers,
-        speakersBio: req.body.speakersBio,
-        prayers: req.body.prayers,
-        bishop: req.body.bishop
+    const speaker = {
+        name: req.body.name,
+        topic: req.body.topic
     };
     const response = await mongodb
         .getDb()
         .db()
-        .collection('people')
+        .collection('speaker')
         .replaceOne({
-            _id: speakersId
-        }, people);
+            _id: speakerId
+        }, speaker);
     console.log(response);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error occurred while updating people.');
+        res.status(500).json(response.error || 'Some error occurred while updating speaker.');
     }
 };
 
 const deleteSpeaker = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid people id to delete people.');
+        res.status(400).json('Must use a valid speaker id to delete speaker.');
     }
     const speakersId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db().collection('people').deleteOne({
+    const response = await mongodb.getDb().db().collection('speaker').deleteOne({
         _id: speakersId
     }, true);
     console.log(response);
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error occurred while deleting people.');
+        res.status(500).json(response.error || 'Some error occurred while deleting speaker.');
     }
 };
 
