@@ -21,8 +21,8 @@ const doc = {
         oauth2: {
             type: 'oauth2',
             flow: 'authorizationCode',
-            authorizationUrl: 'http://localhost:3410/auth/google/callback',
-            tokenUrl: 'http://localhost:3410/oauth/token',
+            authorizationUrl: 'https://sacrament-program-api-8pcq.onrender.com/auth/google/callback',
+            tokenUrl: 'https://sacrament-program-api-8pcq.onrender.com/oauth/token',
             scopes: ''
         }
     }
