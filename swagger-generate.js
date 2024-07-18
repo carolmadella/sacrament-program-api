@@ -8,7 +8,7 @@ const doc = {
     },
     host: [
         // 'localhost:3000',
-        'https://sacrament-program-api-1.onrender.com'
+        'sacrament-program-api-1.onrender.com'
     ],
     schemes: [
         // 'http',

@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": [
-    "https://sacrament-program-api-1.onrender.com"
+    "sacrament-program-api-1.onrender.com"
   ],
   "basePath": "/",
   "schemes": [
