@@ -30,7 +30,7 @@ const saveMeeting = (req, res, next) => {
 
 const saveAnnouncement = (req, res, next) => {
     const validationRule = {
-        // date: 'required|string',
+        date: 'required|string',
         announcement: 'required|string'
     };
     validator(req.body, validationRule, {}, (err, status) => {
@@ -48,7 +48,7 @@ const saveAnnouncement = (req, res, next) => {
 
 const saveActivity = (req, res, next) => {
     const validationRule = {
-        // date: 'required|string',
+        date: 'required|string',
         startTime: 'required|string',
         endTime: 'required|string',
         place: 'required|string',
@@ -69,7 +69,7 @@ const saveActivity = (req, res, next) => {
 
 const saveNeedHelp = (req, res, next) => {
     const validationRule = {
-        // date: 'required|string',
+        date: 'required|string',
         name: 'required|string',
         contact: 'required|string',
         email: 'email',
@@ -90,7 +90,6 @@ const saveNeedHelp = (req, res, next) => {
 };
 
 module.exports = {
-    saveContact,
     saveMeeting,
     saveAnnouncement,
     saveActivity,

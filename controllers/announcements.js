@@ -45,7 +45,8 @@ const getSingle = (req, res) => {
 
 const createAnnouncement = async (req, res) => {
     const announcement = {
-        date: new Date(),
+        // date: new Date(),
+        date: req.body.date,
         announcement: req.body.announcement
     };
     const response = await mongodb.getDb().db(process.env.DB_NAME).collection('announcements').insertOne(announcement);
@@ -63,7 +64,8 @@ const updateAnnouncement = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     // be aware of updateOne if you only want to update specific fields
     const announcement = {
-        date: new Date(),
+        // date: new Date(),
+        date: req.body.date,
         announcement: req.body.announcement
     };
     const response = await mongodb

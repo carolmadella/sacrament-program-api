@@ -45,7 +45,8 @@ const getSingle = (req, res) => {
 
 const createNeedHelp = async (req, res) => {
     const needHelp = {
-        date: new Date(),
+        // date: new Date(),
+        date: req.body.date,
         name: req.body.name,
         contact: req.body.contact,
         email: req.body.email,
@@ -67,7 +68,8 @@ const updateNeedHelp = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     // be aware of updateOne if you only want to update specific fields
     const needHelp = {
-        date: new Date(),
+        // date: new Date(),
+        date: req.body.date,
         name: req.body.name,
         contact: req.body.contact,
         email: req.body.email,
