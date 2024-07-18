@@ -16,6 +16,7 @@
     "express": "^4.16.3",
     "express-validator": "^7.1.0",
     "mongodb": "^4.4.0",
+    "passport": "^0.7.0",
     "swagger-ui-express": "^5.0.0",
     "validatorjs": "^3.22.1"
   },
@@ -23,7 +24,7 @@
     "@eslint/js": "^9.2.0",
     "eslint": "^9.2.0",
     "globals": "^15.2.0",
-    "nodemon": "^1.18.4",
+    "nodemon": "^3.1.4",
     "swagger-autogen": "^2.23.7"
   }
 }
