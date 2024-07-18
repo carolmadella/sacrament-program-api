@@ -7,17 +7,13 @@ const doc = {
         description: 'API documentation for the Sacrament webpage',
     },
     host: [
-        'localhost:3000',
-        'sacrament-program-api-8pcq.onrender.com'
+        // 'localhost:3000',
+        'https://sacrament-program-api-1.onrender.com'
     ],
     schemes: [
-        'http',
+        // 'http',
         'https'
     ],
-    servers: [{
-        url: 'http://localhost:3000', // Change this to your actual server URL
-        url: 'https://sacrament-program-api-8pcq.onrender.com', // Change this to your actual server URL
-    }]
 };
 
 const outputFile = './swagger.json';

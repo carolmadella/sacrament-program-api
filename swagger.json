@@ -6,40 +6,13 @@
     "version": "1.0.0"
   },
   "host": [
-    "localhost:3000"
+    "https://sacrament-program-api-1.onrender.com"
   ],
-  "servers": [{
-    "url": "https://sacrament-program-api-8pcq.onrender.com"
-  }],
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/meetings/": {
       "get": {
         "description": "",
