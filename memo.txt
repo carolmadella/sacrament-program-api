@@ -1,20 +1,3 @@
-I created team project in "yuki" branch by imitating previous personal project  and deployed our app in another onrender service.
-(https://github.com/carolmadella/sacrament-program-api/tree/yuki)
-(https://sacrament-program-api-8pcq.onrender.com/api-docs/#/)
-The due date is this weekend, and if we don't have much time, how about use this? Though it's sad that if we don't use some of the code that everyone built hard and the nice navigation bar and form that Runa made.
-It can show api documents. It can connect database appropriately. But authentication function doesn't work. I've been working on authentication with Swagger api for long time, but I still don't know how to configure it.
-Because I'm confused about collections and fields of our project we are working on so far, I changed some collection names and fields. But because this is my personal opinion, we don't need to use this collections and fields in our project. 
+GitHub Repository:
 
-
-[Collections and Fields I implemenged]
-1) meetings
-bishop, conductor, chorister, accompanist, openingHymn, openingPrayer, speaker1, speaker2, speaker3, closingHymn, closingPrayer
-
-2) announcements
-date, announcement
-
-3) activities
-date, startTime, endTime, place, activity
-
-4) needHelp
-date, name, contact, email, phone, whatHelpINeed
+Onrender URL:

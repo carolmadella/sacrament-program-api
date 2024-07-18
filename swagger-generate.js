@@ -3,29 +3,21 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
     info: {
         title: 'Sacrament API',
-        description: 'Description'
+        description: 'Description',
+        description: 'API documentation for the Sacrament webpage',
     },
     host: [
-        // 'localhost:3410',
+        'localhost:3000',
         'sacrament-program-api-8pcq.onrender.com'
     ],
     schemes: [
-        // 'http', 
+        'http',
         'https'
     ],
     servers: [{
-        url: 'http://localhost:3410', // Change this to your actual server URL
+        url: 'http://localhost:3000', // Change this to your actual server URL
         url: 'https://sacrament-program-api-8pcq.onrender.com', // Change this to your actual server URL
-    }],
-    securityDefinitions: {
-        oauth2: {
-            type: 'oauth2',
-            flow: 'authorizationCode',
-            authorizationUrl: 'https://sacrament-program-api-8pcq.onrender.com/auth/google/callback',
-            tokenUrl: 'https://sacrament-program-api-8pcq.onrender.com/oauth/token',
-            scopes: ''
-        }
-    }
+    }]
 };
 
 const outputFile = './swagger.json';
