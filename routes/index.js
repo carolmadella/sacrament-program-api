@@ -1,29 +1,24 @@
-const router = require('express').Router();
-const { requiresAuth } = require('express-openid-connect');
+const express = require('express');
+const router = express.Router();
+const {
+    requiresAuth
+} = require('express-openid-connect');
 
-router
-  //.use('/', require('./swagger'))
-  .use('/people', require('./people'))
-  .use('/hymnsRoutes', require('./hymnsRoutes'))
-
-  .get('/', function (req, res, next) {
-  res.render('index', {
-    title: 'Auth0 Webapp sample Nodejs',
-    isAuthenticated: req.oidc.isAuthenticated()
-  });
+router.get('/', function (req, res, next) {
+    res.render('index', {
+        title: 'Auth0 Webapp sample Nodejs',
+        isAuthenticated: req.oidc.isAuthenticated()
+    });
 });
 
-// router.get('/profile',  function (req, res, next) {
-//   res.render('profile', {
-//     // userProfile: JSON.stringify(req.oidc.user, null, 2),
-//     title: 'Profile page',
-//     isAuthenticated: req.oidc.isAuthenticated()
-//   });
-// });
-router.get('/profile', requiresAuth(), function (req, res, next) {
-  res.render('profile', {
-    userProfile: JSON.stringify(req.oidc.user, null, 2),
-    title: 'Profile page'
-  });
-});
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
+
+router.use('/api-docs', requiresAuth(), swaggerUi.serve);
+router.get('/api-docs', requiresAuth(), swaggerUi.setup(swaggerDocument));
+router.use('/meetings', requiresAuth(), require('./meetings'));
+router.use('/announcements', requiresAuth(), require('./announcements'));
+router.use('/activities', requiresAuth(), require('./activities'));
+router.use('/needHelp', requiresAuth(), require('./needHelp'));
+
 module.exports = router;
